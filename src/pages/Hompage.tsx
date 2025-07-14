@@ -165,7 +165,7 @@ const Homepage: React.FC = () => {
               transition={{ delay: 0.4 }}
               className='text-2xl md:text-3xl text-white/80 mb-8 font-mono'
             >
-              Full Stack Developer & AI/ML Enthusiast
+              MERN Stack Developer & AI Agents Developer
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -181,7 +181,6 @@ const Homepage: React.FC = () => {
               </Link>
               <Link
                 to='/contact'
-                target='_blank'
                 className='px-8 py-3 bg-[#111827] text-white font-bold hover:bg-[#1F2937] font-mono border border-white/10 hover:border-white/20 rounded transition-all duration-300 hover:scale-105'
               >
                 Contact Me
