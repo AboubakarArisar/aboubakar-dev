@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Homepage from "./pages/Hompage";
 import Contact from "./pages/Contact";
+import About from "./pages/About";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
@@ -14,6 +15,7 @@ const AppRouter: React.FC = () => {
           <Routes>
             <Route path='/' element={<Homepage />} />
             <Route path='/contact' element={<Contact />} />
+            <Route path='/about' element={<About />} />
           </Routes>
         </main>
         <Footer />
