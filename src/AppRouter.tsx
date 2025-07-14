@@ -7,9 +7,11 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Projects from "./pages/Projects";
 import NotFound from "./pages/404";
+import ScrollToTop from "./pages/ScrollToTop";
 const AppRouter: React.FC = () => {
   return (
     <Router>
+      <ScrollToTop />
       <div className='flex flex-col min-h-screen'>
         <Header />
         <main className='flex-grow'>
