@@ -276,11 +276,11 @@ const Homepage: React.FC = () => {
                   </div>
                 </div>
               </div>
-              <div className='p-6'>
-                <h3 className='text-2xl font-bold font-mono text-white mb-6'>
+              <div className='p-6 w-full'>
+                <h3 className='text-2xl font-bold font-mono text-white text-center mb-6'>
                   Droplr - Proximity File Sharing
                 </h3>
-                <div className='flex gap-4'>
+                <div className='flex justify-between w-full'>
                   <a
                     href='https://droplr-front.vercel.app/'
                     target='_blank'
@@ -341,7 +341,7 @@ const Homepage: React.FC = () => {
                 </div>
               </div>
               <div className='p-6 w-full'>
-                <h3 className='text-2xl font-bold font-mono text-white mb-6'>
+                <h3 className='text-2xl font-bold font-mono text-white text-center mb-6'>
                   NoteSwap - University Notes Exchange
                 </h3>
                 <div className='flex justify-between w-full'>
