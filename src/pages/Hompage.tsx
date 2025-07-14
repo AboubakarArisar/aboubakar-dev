@@ -250,7 +250,7 @@ const Homepage: React.FC = () => {
                   className='w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700'
                 />
 
-                <div className='absolute inset-0 bg-[#0f172a]/90 backdrop-blur-[2px] flex flex-col justify-between p-6 h-full min-h-full group-hover:translate-y-3 translate-y-full transition-transform duration-500'>
+                <div className='hidden md:block absolute inset-0 bg-[#0f172a]/90 backdrop-blur-[2px] flex flex-col justify-between p-6 h-full min-h-full group-hover:translate-y-3 translate-y-full transition-transform duration-500'>
                   <div>
                     <p className='text-gray-200 text-lg leading-relaxed mb-6'>
                       A location-based file sharing web application that allows
@@ -283,7 +283,7 @@ const Homepage: React.FC = () => {
                 <h3 className='text-2xl font-bold font-mono text-white text-center mb-6'>
                   Droplr - Proximity File Sharing
                 </h3>
-                <div className='flex justify-between w-full'>
+                <div className='flex flex-col md:flex-row gap-4 justify-between w-full'>
                   <a
                     href='https://droplr-front.vercel.app/'
                     target='_blank'
@@ -317,7 +317,7 @@ const Homepage: React.FC = () => {
                   alt='NoteSwap Project Screenshot'
                   className='w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700'
                 />
-                <div className='absolute inset-0 bg-[#0f172a]/90 backdrop-blur-[2px] flex flex-col justify-between p-6 h-full min-h-full group-hover:translate-y-3 translate-y-full transition-transform duration-500'>
+                <div className='hidden md:block absolute inset-0 bg-[#0f172a]/90 backdrop-blur-[2px] flex flex-col justify-between p-6 h-full min-h-full group-hover:translate-y-3 translate-y-full transition-transform duration-500'>
                   <div>
                     <p className='text-gray-200 text-lg leading-relaxed mb-6'>
                       A Scribd-inspired platform for university students to
@@ -349,7 +349,7 @@ const Homepage: React.FC = () => {
                 <h3 className='text-2xl font-bold font-mono text-white text-center mb-6'>
                   NoteSwap - University Notes Exchange
                 </h3>
-                <div className='flex justify-between w-full'>
+                <div className='flex flex-col md:flex-row gap-4 justify-between w-full'>
                   <a
                     href='https://noteswap-sigma.vercel.app/'
                     target='_blank'
