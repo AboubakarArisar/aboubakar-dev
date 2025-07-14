@@ -250,29 +250,32 @@ const Homepage: React.FC = () => {
                   className='w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700'
                 />
 
-                <div className='absolute inset-0 bg-[#0f172a]/90 backdrop-blur-[2px] translate-y-full group-hover:translate-y-0 transition-transform duration-500 p-6 flex flex-col'>
-                  <p className='text-gray-200 text-lg leading-relaxed'>
-                    A location-based file sharing web application that allows
-                    users to share files within a 200m radius. Files
-                    automatically expire after 20 minutes for enhanced privacy.
-                    Built with MERN stack and styled with Tailwind CSS.
-                  </p>
-                  <div className='flex gap-3 flex-wrap mt-4'>
-                    <span className='px-3 py-1 bg-dark-700/50 rounded-full text-sm text-gray-300'>
-                      MongoDB
-                    </span>
-                    <span className='px-3 py-1 bg-dark-700/50 rounded-full text-sm text-gray-300'>
-                      Express.js
-                    </span>
-                    <span className='px-3 py-1 bg-dark-700/50 rounded-full text-sm text-gray-300'>
-                      React
-                    </span>
-                    <span className='px-3 py-1 bg-dark-700/50 rounded-full text-sm text-gray-300'>
-                      Node.js
-                    </span>
-                    <span className='px-3 py-1 bg-dark-700/50 rounded-full text-sm text-gray-300'>
-                      Tailwind CSS
-                    </span>
+                <div className='absolute inset-0 bg-[#0f172a]/90 backdrop-blur-[2px] flex flex-col justify-between p-6 h-full min-h-full group-hover:translate-y-3 translate-y-full transition-transform duration-500'>
+                  <div>
+                    <p className='text-gray-200 text-lg leading-relaxed mb-6'>
+                      A location-based file sharing web application that allows
+                      users to share files within a 200m radius. Files
+                      automatically expire after 20 minutes for enhanced
+                      privacy. Built with MERN stack and styled with Tailwind
+                      CSS.
+                    </p>
+                    <div className='flex gap-2 flex-wrap bg-dark-700/60 rounded-lg p-2 border border-[#34D399]/30'>
+                      <span className='px-3 py-1 bg-[#222c2b] border border-[#34D399] rounded-full text-sm text-[#34D399] font-semibold tracking-wide'>
+                        MongoDB
+                      </span>
+                      <span className='px-3 py-1 bg-[#23272b] border border-[#6366F1] rounded-full text-sm text-[#6366F1] font-semibold tracking-wide'>
+                        Express.js
+                      </span>
+                      <span className='px-3 py-1 bg-[#1e293b] border border-[#06b6d4] rounded-full text-sm text-[#06b6d4] font-semibold tracking-wide'>
+                        React
+                      </span>
+                      <span className='px-3 py-1 bg-[#222c2b] border border-[#34D399] rounded-full text-sm text-[#34D399] font-semibold tracking-wide'>
+                        Node.js
+                      </span>
+                      <span className='px-3 py-1 bg-[#1e293b] border border-[#38bdf8] rounded-full text-sm text-[#38bdf8] font-semibold tracking-wide'>
+                        Tailwind CSS
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -314,29 +317,31 @@ const Homepage: React.FC = () => {
                   alt='NoteSwap Project Screenshot'
                   className='w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700'
                 />
-                <div className='absolute inset-0 bg-[#0f172a]/90 backdrop-blur-[2px] translate-y-full group-hover:translate-y-0 transition-transform duration-500 p-6 flex flex-col'>
-                  <p className='text-gray-200 text-lg leading-relaxed'>
-                    A Scribd-inspired platform for university students to share
-                    and exchange notes using a points system. Users earn points
-                    by uploading notes and spend points to download. Built with
-                    MERN stack and Tailwind CSS.
-                  </p>
-                  <div className='flex gap-3 flex-wrap mt-4'>
-                    <span className='px-3 py-1 bg-dark-700/50 rounded-full text-sm text-gray-300'>
-                      MongoDB
-                    </span>
-                    <span className='px-3 py-1 bg-dark-700/50 rounded-full text-sm text-gray-300'>
-                      Express.js
-                    </span>
-                    <span className='px-3 py-1 bg-dark-700/50 rounded-full text-sm text-gray-300'>
-                      React
-                    </span>
-                    <span className='px-3 py-1 bg-dark-700/50 rounded-full text-sm text-gray-300'>
-                      Node.js
-                    </span>
-                    <span className='px-3 py-1 bg-dark-700/50 rounded-full text-sm text-gray-300'>
-                      Tailwind CSS
-                    </span>
+                <div className='absolute inset-0 bg-[#0f172a]/90 backdrop-blur-[2px] flex flex-col justify-between p-6 h-full min-h-full group-hover:translate-y-3 translate-y-full transition-transform duration-500'>
+                  <div>
+                    <p className='text-gray-200 text-lg leading-relaxed mb-6'>
+                      A Scribd-inspired platform for university students to
+                      share and exchange notes using a points system. Users earn
+                      points by uploading notes and spend points to download.
+                      Built with MERN stack and Tailwind CSS.
+                    </p>
+                    <div className='flex gap-2 flex-wrap bg-dark-700/60 rounded-lg p-2 border border-[#6366F1]/30'>
+                      <span className='px-3 py-1 bg-[#222c2b] border border-[#34D399] rounded-full text-sm text-[#34D399] font-semibold tracking-wide'>
+                        MongoDB
+                      </span>
+                      <span className='px-3 py-1 bg-[#23272b] border border-[#6366F1] rounded-full text-sm text-[#6366F1] font-semibold tracking-wide'>
+                        Express.js
+                      </span>
+                      <span className='px-3 py-1 bg-[#1e293b] border border-[#06b6d4] rounded-full text-sm text-[#06b6d4] font-semibold tracking-wide'>
+                        React
+                      </span>
+                      <span className='px-3 py-1 bg-[#222c2b] border border-[#34D399] rounded-full text-sm text-[#34D399] font-semibold tracking-wide'>
+                        Node.js
+                      </span>
+                      <span className='px-3 py-1 bg-[#1e293b] border border-[#38bdf8] rounded-full text-sm text-[#38bdf8] font-semibold tracking-wide'>
+                        Tailwind CSS
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>

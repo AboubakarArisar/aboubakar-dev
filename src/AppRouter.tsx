@@ -5,7 +5,8 @@ import Contact from "./pages/Contact";
 import About from "./pages/About";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-
+import Projects from "./pages/Projects";
+import NotFound from "./pages/404";
 const AppRouter: React.FC = () => {
   return (
     <Router>
@@ -16,6 +17,8 @@ const AppRouter: React.FC = () => {
             <Route path='/' element={<Homepage />} />
             <Route path='/contact' element={<Contact />} />
             <Route path='/about' element={<About />} />
+            <Route path='/projects' element={<Projects />} />
+            <Route path='*' element={<NotFound />} />
           </Routes>
         </main>
         <Footer />
