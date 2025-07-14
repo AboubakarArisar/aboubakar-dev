@@ -20,6 +20,7 @@ import {
   SiN8N,
   SiTensorflow,
 } from "react-icons/si";
+import { Link } from "react-router-dom";
 
 const Homepage: React.FC = () => {
   useEffect(() => {
@@ -172,18 +173,19 @@ const Homepage: React.FC = () => {
               transition={{ delay: 0.6 }}
               className='flex justify-center gap-6'
             >
-              <a
-                href='#projects'
+              <Link
+                to='/projects'
                 className='px-8 py-3 bg-[#1F2937] text-white font-bold hover:bg-[#374151] font-mono border border-white/10 hover:border-white/20 rounded transition-all duration-300 hover:scale-105'
               >
                 View Projects
-              </a>
-              <a
-                href='#contact'
+              </Link>
+              <Link
+                to='/contact'
+                target='_blank'
                 className='px-8 py-3 bg-[#111827] text-white font-bold hover:bg-[#1F2937] font-mono border border-white/10 hover:border-white/20 rounded transition-all duration-300 hover:scale-105'
               >
                 Contact Me
-              </a>
+              </Link>
             </motion.div>
           </div>
         </motion.section>
@@ -234,42 +236,135 @@ const Homepage: React.FC = () => {
           <h2 className='text-3xl font-bold text-center mb-12 font-mono text-[#94A3B8]'>
             Featured Projects
           </h2>
-          <div className='grid md:grid-cols-2 gap-8'>
-            {[1, 2].map((_, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.2 }}
-                viewport={{ once: true }}
-                className='bg-dark-800 rounded-lg border border-[#1E293B] hover:border-[#3B82F6]/30 group hover:shadow-[0_0_30px_rgba(37,99,235,0.1)]'
-              >
-                <div className='h-48 bg-dark-700 rounded-t-lg'></div>
-                <div className='p-6'>
-                  <h3 className='text-xl font-bold mb-2 font-mono group-hover:text-[#60A5FA] transition-colors'>
-                    Project Title
-                  </h3>
-                  <p className='text-white/70 mb-4'>
-                    A brief description of the project and the technologies
-                    used.
+          <div className='grid md:grid-cols-2 gap-8 max-w-7xl mx-auto'>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              viewport={{ once: true }}
+              className='relative bg-dark-800/50 backdrop-blur-sm rounded-xl overflow-hidden group'
+            >
+              <div className='aspect-video w-full relative'>
+                <img
+                  src='/droplr.jpeg'
+                  alt='Droplr Project Screenshot'
+                  className='w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700'
+                />
+
+                <div className='absolute inset-0 bg-[#0f172a]/90 backdrop-blur-[2px] translate-y-full group-hover:translate-y-0 transition-transform duration-500 p-6 flex flex-col'>
+                  <p className='text-gray-200 text-lg leading-relaxed'>
+                    A location-based file sharing web application that allows
+                    users to share files within a 200m radius. Files
+                    automatically expire after 20 minutes for enhanced privacy.
+                    Built with MERN stack and styled with Tailwind CSS.
                   </p>
-                  <div className='flex gap-4'>
-                    <a
-                      href='#'
-                      className='px-4 py-2 bg-[#1F2937] text-white font-bold hover:bg-[#374151] font-mono border border-white/10 hover:border-white/20 rounded transition-all duration-300 hover:scale-105'
-                    >
-                      Demo →
-                    </a>
-                    <a
-                      href='#'
-                      className='px-4 py-2 bg-[#111827] text-white font-bold hover:bg-[#1F2937] font-mono border border-white/10 hover:border-white/20 rounded transition-all duration-300 hover:scale-105'
-                    >
-                      GitHub →
-                    </a>
+                  <div className='flex gap-3 flex-wrap mt-4'>
+                    <span className='px-3 py-1 bg-dark-700/50 rounded-full text-sm text-gray-300'>
+                      MongoDB
+                    </span>
+                    <span className='px-3 py-1 bg-dark-700/50 rounded-full text-sm text-gray-300'>
+                      Express.js
+                    </span>
+                    <span className='px-3 py-1 bg-dark-700/50 rounded-full text-sm text-gray-300'>
+                      React
+                    </span>
+                    <span className='px-3 py-1 bg-dark-700/50 rounded-full text-sm text-gray-300'>
+                      Node.js
+                    </span>
+                    <span className='px-3 py-1 bg-dark-700/50 rounded-full text-sm text-gray-300'>
+                      Tailwind CSS
+                    </span>
                   </div>
                 </div>
-              </motion.div>
-            ))}
+              </div>
+              <div className='p-6'>
+                <h3 className='text-2xl font-bold font-mono text-white mb-6'>
+                  Droplr - Proximity File Sharing
+                </h3>
+                <div className='flex gap-4'>
+                  <a
+                    href='https://droplr-front.vercel.app/'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='px-6 py-3 bg-[#1F2937] text-white font-bold hover:bg-[#374151] font-mono border border-white/10 hover:border-white/20 rounded-lg transition-all duration-300 hover:scale-105'
+                  >
+                    Live Demo →
+                  </a>
+                  <a
+                    href='http://github.com/AboubakarArisar/Droplr'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='px-6 py-3 bg-[#111827] text-white font-bold hover:bg-[#1F2937] font-mono border border-white/10 hover:border-white/20 rounded-lg transition-all duration-300 hover:scale-105'
+                  >
+                    GitHub →
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              viewport={{ once: true }}
+              className='relative bg-dark-800/50 backdrop-blur-sm rounded-xl overflow-hidden group'
+            >
+              <div className='aspect-video w-full relative'>
+                <img
+                  src='/noteswap.jpeg'
+                  alt='NoteSwap Project Screenshot'
+                  className='w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700'
+                />
+                <div className='absolute inset-0 bg-[#0f172a]/90 backdrop-blur-[2px] translate-y-full group-hover:translate-y-0 transition-transform duration-500 p-6 flex flex-col'>
+                  <p className='text-gray-200 text-lg leading-relaxed'>
+                    A Scribd-inspired platform for university students to share
+                    and exchange notes using a points system. Users earn points
+                    by uploading notes and spend points to download. Built with
+                    MERN stack and Tailwind CSS.
+                  </p>
+                  <div className='flex gap-3 flex-wrap mt-4'>
+                    <span className='px-3 py-1 bg-dark-700/50 rounded-full text-sm text-gray-300'>
+                      MongoDB
+                    </span>
+                    <span className='px-3 py-1 bg-dark-700/50 rounded-full text-sm text-gray-300'>
+                      Express.js
+                    </span>
+                    <span className='px-3 py-1 bg-dark-700/50 rounded-full text-sm text-gray-300'>
+                      React
+                    </span>
+                    <span className='px-3 py-1 bg-dark-700/50 rounded-full text-sm text-gray-300'>
+                      Node.js
+                    </span>
+                    <span className='px-3 py-1 bg-dark-700/50 rounded-full text-sm text-gray-300'>
+                      Tailwind CSS
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div className='p-6 w-full'>
+                <h3 className='text-2xl font-bold font-mono text-white mb-6'>
+                  NoteSwap - University Notes Exchange
+                </h3>
+                <div className='flex justify-between w-full'>
+                  <a
+                    href='https://noteswap-sigma.vercel.app/'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='px-6 py-3 bg-[#1F2937] text-white font-bold hover:bg-[#374151] font-mono border border-white/10 hover:border-white/20 rounded-lg transition-all duration-300 hover:scale-105'
+                  >
+                    Live Demo →
+                  </a>
+                  <a
+                    href='https://github.com/AboubakarArisar/NoteSwap-Frontend'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='px-6 py-3 bg-[#111827] text-white font-bold hover:bg-[#1F2937] font-mono border border-white/10 hover:border-white/20 rounded-lg transition-all duration-300 hover:scale-105'
+                  >
+                    GitHub →
+                  </a>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </motion.section>
 
