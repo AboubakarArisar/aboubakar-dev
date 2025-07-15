@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "motion/react";
 
 const Contact: React.FC = () => {
+  useEffect(() => {
+    document.title = "Abou Bakar | Contact";
+  }, []);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",

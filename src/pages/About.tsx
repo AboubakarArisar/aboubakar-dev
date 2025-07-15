@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "motion/react";
 
 const About: React.FC = () => {
+  useEffect(() => {
+    document.title = "Abou Bakar | About";
+  }, []);
+
   return (
     <div className='min-h-screen bg-dark-900 text-white pt-24 flex items-center justify-center'>
       <div className='container mx-auto px-6 py-16 max-w-4xl flex flex-col md:flex-row items-center gap-12 bg-dark-800 rounded-xl shadow-lg'>
@@ -40,6 +44,18 @@ const About: React.FC = () => {
             final year at Sukkur IBA University, where I continue to expand my
             skills in both software engineering and applied AI.
           </p>
+          <div className='my-6 flex justify-center'>
+            <a
+              href='https://contra.com/abou_bakar_fyf4x3wq'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='flex items-center gap-2 px-6 py-3 rounded-md bg-[#18181b] hover:bg-[#232326] text-white font-mono font-semibold text-lg shadow-lg transition-all duration-200 border border-[#232326] hover:scale-105'
+              style={{ minWidth: 180 }}
+            >
+              <img src='/contra.jpeg' alt='Contra' className='w-6 h-6' />
+              Hire Me on Contra
+            </a>
+          </div>
           <div className='flex flex-col sm:flex-row gap-4 items-center md:items-start'>
             <span className='px-6 py-2 rounded-full bg-[#1F2937] text-[#34D399] font-bold font-mono border border-[#34D399]/30 shadow-md text-base'>
               Available for Freelance

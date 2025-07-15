@@ -24,6 +24,7 @@ import { Link } from "react-router-dom";
 
 const Homepage: React.FC = () => {
   useEffect(() => {
+    document.title = "Abou Bakar ";
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -138,6 +139,18 @@ const Homepage: React.FC = () => {
 
   return (
     <div className='min-h-screen bg-dark-900 text-white'>
+      <div
+        aria-hidden='true'
+        className='fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-0 pointer-events-none animate-orb-move'
+        style={{
+          width: "200px",
+          height: "200px",
+          background:
+            "radial-gradient(circle, rgba(255,180,80,0.35) 0%, rgba(243, 177, 124, 0.18) 60%, rgba(255,115,0,0) 100%)",
+          filter: "blur(32px)",
+          borderRadius: "50%",
+        }}
+      />
       <div className='pt-24'>
         <motion.section
           initial={{ opacity: 0, y: 50 }}
@@ -186,6 +199,19 @@ const Homepage: React.FC = () => {
                 Contact Me
               </Link>
             </motion.div>
+
+            <div className='my-8 flex justify-center'>
+              <a
+                href='https://contra.com/abou_bakar_fyf4x3wq'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='flex items-center gap-2 px-6 py-3 rounded-md bg-[#18181b] hover:bg-[#232326] text-white font-mono font-semibold text-lg shadow-lg transition-all duration-200 border border-[#232326] hover:scale-105'
+                style={{ minWidth: 180 }}
+              >
+                <img src='/contra.jpeg' alt='Contra' className='w-6 h-6' />
+                Hire Me on Contra
+              </a>
+            </div>
           </div>
         </motion.section>
 

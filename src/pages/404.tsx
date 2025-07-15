@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 
 const NotFound: React.FC = () => {
+  useEffect(() => {
+    document.title = "Abou Bakar | 404";
+  }, []);
+
   return (
     <div className='min-h-screen bg-dark-900 flex flex-col items-center justify-center p-4 pt-24'>
       <motion.div

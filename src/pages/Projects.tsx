@@ -21,6 +21,7 @@ const Projects: React.FC = () => {
   const [hasPrev, setHasPrev] = useState(false);
 
   useEffect(() => {
+    document.title = "Abou Bakar | Projects";
     setLoading(true);
     fetch(
       `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=${PER_PAGE}&page=${page}`
