@@ -11,7 +11,9 @@ const Footer: React.FC = () => {
       <div className='container mx-auto px-6'>
         <div className='flex flex-col gap-6 md:flex-row md:gap-0 justify-between items-center'>
           <div className='text-white/80 font-mono text-center md:text-left'>
-            © {new Date().getFullYear()} <span className='text-[#60A5FA]'>Abou Bakar</span>. All rights reserved.
+            © {new Date().getFullYear()}{" "}
+            <span className='text-[#60A5FA]'>Abou Bakar</span>. All rights
+            reserved.
           </div>
           <div className='flex flex-col gap-4 sm:flex-row sm:gap-6 items-center'>
             <a
