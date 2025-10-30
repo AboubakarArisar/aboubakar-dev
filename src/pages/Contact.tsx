@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "motion/react";
+import { PopupModal } from "react-calendly";
 
 const Contact: React.FC = () => {
   useEffect(() => {
@@ -11,6 +12,8 @@ const Contact: React.FC = () => {
     email: "",
     message: "",
   });
+
+  const [isCalendlyOpen, setCalendlyOpen] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -175,7 +178,33 @@ const Contact: React.FC = () => {
                 Send Message →
               </motion.button>
             </form>
-
+            {/* Calendly Schedule Button (using react-calendly) */}
+            <div className='my-8 flex flex-col items-center'>
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                type='button'
+                className='px-8 py-4 bg-[#1F2937] text-white font-bold hover:bg-[#374151] font-mono border border-white/10 hover:border-white/20 rounded-lg transition-all duration-300 shadow-lg hover:scale-105 focus:outline-none mb-2'
+                onClick={() => setCalendlyOpen(true)}
+              >
+                Schedule a Call with Me
+              </motion.button>
+              <PopupModal
+                url='https://calendly.com/aboubakar-dev/30min?back=1&month=2025-10'
+                onModalClose={() => setCalendlyOpen(false)}
+                open={isCalendlyOpen}
+                rootElement={
+                  typeof window !== "undefined"
+                    ? document?.getElementById("root") || document.body
+                    : undefined
+                }
+                pageSettings={{
+                  backgroundColor: "1F2937",
+                  textColor: "ffffff",
+                  primaryColor: "64748B",
+                }}
+              />
+            </div>
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
