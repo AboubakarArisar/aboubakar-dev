@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { PopupModal } from "react-calendly";
+import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
 
 const Contact: React.FC = () => {
   useEffect(() => {
@@ -10,230 +11,219 @@ const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    company: "",
     message: "",
   });
 
   const [isCalendlyOpen, setCalendlyOpen] = useState(false);
+  const rootElement = document.getElementById("root") ?? document.body;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
+
+    const subject = encodeURIComponent(
+      `Project Inquiry from ${formData.name || "Website Visitor"}`
+    );
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\nCompany: ${formData.company}\n\nProject details:\n${formData.message}`
+    );
+
+    window.location.href = `mailto:aboubakar.dev@gmail.com?subject=${subject}&body=${body}`;
   };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setFormData({
-      ...formData,
+    setFormData((current) => ({
+      ...current,
       [e.target.name]: e.target.value,
-    });
+    }));
   };
 
   return (
-    <div className='min-h-screen bg-dark-900 pt-24'>
-      <div className='container mx-auto px-6 py-12'>
-        <div className='grid md:grid-cols-2 gap-12 items-center max-w-7xl mx-auto'>
-          {/* Left Side - Animated Text */}
+    <div className='min-h-screen bg-dark-900 px-6 pt-28 text-white'>
+      <div className='container mx-auto max-w-6xl pb-16'>
+        <div className='grid gap-8 lg:grid-cols-[0.95fr_1.05fr]'>
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className='space-y-8'
+            transition={{ duration: 0.7 }}
+            className='rounded-[2rem] border border-white/10 bg-[#0f172a]/85 p-8 md:p-10'
           >
-            <motion.h1
-              className='text-6xl md:text-8xl font-bold text-white font-mono'
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-            >
-              Let's
-              <motion.span
-                className='block text-[#94A3B8]'
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.4 }}
-              >
-                Create
-              </motion.span>
-              <motion.span
-                className='block text-[#64748B]'
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.6 }}
-              >
-                Together
-              </motion.span>
-            </motion.h1>
+            <p className='text-sm uppercase tracking-[0.3em] text-[#94a3b8]'>
+              Contact
+            </p>
+            <h1 className='mt-4 text-4xl font-bold text-white md:text-6xl'>
+              Send the project details and I will reply with a practical next step.
+            </h1>
+            <p className='mt-6 text-base leading-8 text-slate-300'>
+              Best inquiries include what you are building, what is blocked right
+              now, your timeline, and whether you need frontend, backend, or full
+              product development.
+            </p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8 }}
-              className='space-y-6'
-            >
-              <div className='flex items-center gap-4'>
-                <div className='w-12 h-12 rounded-full bg-dark-800 flex items-center justify-center'>
-                  <motion.div
-                    animate={{
-                      scale: [1, 1.2, 1],
-                      rotate: [0, 360, 0],
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      repeatType: "reverse",
-                    }}
-                    className='w-6 h-6 rounded-full bg-[#94A3B8]'
-                  />
-                </div>
-                <p className='text-xl text-gray-300'>Available for Freelance</p>
+            <div className='mt-8 grid gap-4'>
+              <div className='rounded-2xl border border-[#233047] bg-[#111827] p-5'>
+                <p className='text-sm uppercase tracking-[0.25em] text-[#cbd5e1]'>
+                  Good fit
+                </p>
+                <p className='mt-3 text-sm leading-7 text-slate-300'>
+                  MVP builds, startup product work, backend APIs, dashboards,
+                  automations, and product improvements that need fast execution.
+                </p>
               </div>
-              <div className='flex items-center gap-4'>
-                <div className='w-12 h-12 rounded-full bg-dark-800 flex items-center justify-center'>
-                  <motion.div
-                    animate={{
-                      scale: [1, 1.2, 1],
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      repeatType: "reverse",
-                    }}
-                    className='w-6 h-6 bg-[#64748B] rotate-45'
-                  />
-                </div>
-                <p className='text-xl text-gray-300'>Open to Collaboration</p>
+              <div className='rounded-2xl border border-[#233047] bg-[#111827] p-5'>
+                <p className='text-sm uppercase tracking-[0.25em] text-[#cbd5e1]'>
+                  Fastest way
+                </p>
+                <p className='mt-3 text-sm leading-7 text-slate-300'>
+                  Use the form, email me directly, or book a short call if the scope
+                  is already clear.
+                </p>
               </div>
-            </motion.div>
+            </div>
+
+            <div className='mt-8 flex flex-col gap-4 text-sm text-slate-300'>
+              <a
+                href='mailto:aboubakar.dev@gmail.com'
+                className='inline-flex items-center gap-3 hover:text-white'
+              >
+                <FaEnvelope />
+                aboubakar.dev@gmail.com
+              </a>
+              <a
+                href='https://linkedin.com/in/aboubakarisar'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='inline-flex items-center gap-3 hover:text-white'
+              >
+                <FaLinkedin />
+                LinkedIn profile
+              </a>
+              <a
+                href='https://github.com/AboubakarArisar'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='inline-flex items-center gap-3 hover:text-white'
+              >
+                <FaGithub />
+                GitHub profile
+              </a>
+            </div>
           </motion.div>
 
-          {/* Right Side - Contact Form */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className='bg-dark-800/50 backdrop-blur-sm p-8 rounded-xl border border-[#1E293B]'
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className='rounded-[2rem] border border-white/10 bg-[#111827]/80 p-8 md:p-10'
           >
-            <form onSubmit={handleSubmit} className='space-y-6'>
+            <form onSubmit={handleSubmit} className='space-y-5'>
               <div>
-                <label
-                  htmlFor='name'
-                  className='block text-gray-300 font-mono mb-2'
-                >
+                <label htmlFor='name' className='mb-2 block text-sm text-slate-300'>
                   Name
                 </label>
-                <motion.input
-                  whileFocus={{ scale: 1.02 }}
+                <input
                   type='text'
                   id='name'
                   name='name'
                   value={formData.name}
                   onChange={handleChange}
-                  className='w-full px-4 py-3 rounded-lg bg-dark-700 border border-[#1E293B] text-white focus:outline-none focus:border-[#94A3B8] transition-colors'
+                  className='w-full rounded-xl border border-[#334155] bg-[#020617] px-4 py-3 text-white outline-none transition-colors focus:border-[#f97316]'
                   required
                 />
               </div>
-              <div>
-                <label
-                  htmlFor='email'
-                  className='block text-gray-300 font-mono mb-2'
-                >
-                  Email
-                </label>
-                <motion.input
-                  whileFocus={{ scale: 1.02 }}
-                  type='email'
-                  id='email'
-                  name='email'
-                  value={formData.email}
-                  onChange={handleChange}
-                  className='w-full px-4 py-3 rounded-lg bg-dark-700 border border-[#1E293B] text-white focus:outline-none focus:border-[#94A3B8] transition-colors'
-                  required
-                />
+
+              <div className='grid gap-5 md:grid-cols-2'>
+                <div>
+                  <label
+                    htmlFor='email'
+                    className='mb-2 block text-sm text-slate-300'
+                  >
+                    Email
+                  </label>
+                  <input
+                    type='email'
+                    id='email'
+                    name='email'
+                    value={formData.email}
+                    onChange={handleChange}
+                    className='w-full rounded-xl border border-[#334155] bg-[#020617] px-4 py-3 text-white outline-none transition-colors focus:border-[#f97316]'
+                    required
+                  />
+                </div>
+                <div>
+                  <label
+                    htmlFor='company'
+                    className='mb-2 block text-sm text-slate-300'
+                  >
+                    Company or product
+                  </label>
+                  <input
+                    type='text'
+                    id='company'
+                    name='company'
+                    value={formData.company}
+                    onChange={handleChange}
+                    className='w-full rounded-xl border border-[#334155] bg-[#020617] px-4 py-3 text-white outline-none transition-colors focus:border-[#f97316]'
+                  />
+                </div>
               </div>
+
               <div>
                 <label
                   htmlFor='message'
-                  className='block text-gray-300 font-mono mb-2'
+                  className='mb-2 block text-sm text-slate-300'
                 >
-                  Message
+                  Project brief
                 </label>
-                <motion.textarea
-                  whileFocus={{ scale: 1.02 }}
+                <textarea
                   id='message'
                   name='message'
                   value={formData.message}
                   onChange={handleChange}
-                  rows={6}
-                  className='w-full px-4 py-3 rounded-lg bg-dark-700 border border-[#1E293B] text-white focus:outline-none focus:border-[#94A3B8] transition-colors resize-none'
+                  rows={7}
+                  placeholder='What are you building, what do you need help with, and what is the timeline?'
+                  className='w-full resize-none rounded-xl border border-[#334155] bg-[#020617] px-4 py-3 text-white outline-none transition-colors focus:border-[#f97316]'
                   required
                 />
               </div>
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+
+              <button
                 type='submit'
-                className='w-full px-8 py-4 bg-[#1F2937] text-white font-bold hover:bg-[#374151] font-mono border border-white/10 hover:border-white/20 rounded-lg transition-all duration-300'
+                className='w-full rounded-xl bg-[#f97316] px-6 py-4 text-sm font-semibold text-slate-950 transition-all duration-300 hover:bg-[#fb923c]'
               >
-                Send Message →
-              </motion.button>
+                Send inquiry by email
+              </button>
             </form>
-            {/* Calendly Schedule Button (using react-calendly) */}
-            <div className='my-8 flex flex-col items-center'>
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+
+            <div className='mt-6 rounded-2xl border border-[#233047] bg-[#020617] p-5'>
+              <p className='text-sm uppercase tracking-[0.25em] text-[#cbd5e1]'>
+                Prefer a call?
+              </p>
+              <p className='mt-3 text-sm leading-7 text-slate-300'>
+                Book a short intro call if you already have the project scope in
+                mind and want to discuss delivery.
+              </p>
+              <button
                 type='button'
-                className='px-8 py-4 bg-[#1F2937] text-white font-bold hover:bg-[#374151] font-mono border border-white/10 hover:border-white/20 rounded-lg transition-all duration-300 shadow-lg hover:scale-105 focus:outline-none mb-2'
                 onClick={() => setCalendlyOpen(true)}
+                className='mt-4 inline-flex items-center justify-center rounded-xl border border-[#334155] bg-[#111827] px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-[#1f2937]'
               >
-                Schedule a Call with Me
-              </motion.button>
+                Schedule a call
+              </button>
               <PopupModal
-                url='https://calendly.com/aboubakar-dev/30min?back=1&month=2025-10'
+                url='https://calendly.com/aboubakar-dev/30min'
                 onModalClose={() => setCalendlyOpen(false)}
                 open={isCalendlyOpen}
-                rootElement={
-                  typeof window !== "undefined"
-                    ? document?.getElementById("root") || document.body
-                    : undefined
-                }
+                rootElement={rootElement}
                 pageSettings={{
-                  backgroundColor: "1F2937",
+                  backgroundColor: "0f172a",
                   textColor: "ffffff",
-                  primaryColor: "64748B",
+                  primaryColor: "f97316",
                 }}
               />
             </div>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1 }}
-              className='mt-8 pt-8 border-t border-[#1E293B]'
-            >
-              <div className='flex flex-col gap-4'>
-                <a
-                  href='mailto:aboubakar.dev@gmail.com'
-                  className='text-gray-300 hover:text-white transition-colors flex items-center gap-2'
-                >
-                  <span className='w-8 h-8 rounded-full bg-dark-700 flex items-center justify-center'>
-                    ✉️
-                  </span>
-                  Email{" "}
-                </a>
-                <a
-                  href='https://github.com/AboubakarArisar'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  className='text-gray-300 hover:text-white transition-colors flex items-center gap-2'
-                >
-                  <span className='w-8 h-8 rounded-full bg-dark-700 flex items-center justify-center'>
-                    🔗
-                  </span>
-                  Github
-                </a>
-              </div>
-            </motion.div>
           </motion.div>
         </div>
       </div>

@@ -3,6 +3,7 @@
 @layer base {
   html {
     background-color: #0a0a0a;
+    scroll-behavior: smooth;
   }
 
   body {
@@ -18,27 +19,17 @@
   }
 }
 
-@keyframes orb-move {
-  0% {
-    transform: translate(-50%, -50%) scale(1) translateY(0px) translateX(0px);
-  }
-  25% {
-    transform: translate(-50%, -50%) scale(1.05) translateY(-30px)
-      translateX(40px);
-  }
-  50% {
-    transform: translate(-50%, -50%) scale(1.1) translateY(20px)
-      translateX(-30px);
-  }
-  75% {
-    transform: translate(-50%, -50%) scale(0.97) translateY(-20px)
-      translateX(-50px);
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(1) translateY(0px) translateX(0px);
-  }
-}
-
-.animate-orb-move {
-  animation: orb-move 5s linear infinite;
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.02) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(circle at center, black 40%, transparent 85%);
+  opacity: 0.35;
 }

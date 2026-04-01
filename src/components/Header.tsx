@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const navLinks = [
   { to: "/", label: "Home" },
-  { to: "/projects", label: "Projects" },
+  { to: "/projects", label: "Case Studies" },
   { to: "/about", label: "About" },
   { to: "/contact", label: "Contact" },
 ];
@@ -34,11 +34,9 @@ const Header: React.FC = () => {
         <div className='flex items-center justify-between'>
           <Link
             to='/'
-            className='text-2xl font-bold font-mono text-white hover:text-[#60A5FA] transition-colors flex-shrink-0'
+            className='flex-shrink-0 text-2xl font-bold text-white transition-colors hover:text-[#fb923c]'
           >
-            <span className='text-[#60A5FA]'>&lt;</span>
-            Abou Bakar
-            <span className='text-[#60A5FA]'>/&gt;</span>
+            <span className='text-[#fb923c]'>Abou</span> Bakar
           </Link>
 
           <div className='hidden md:flex items-center space-x-8'>
@@ -46,7 +44,7 @@ const Header: React.FC = () => {
               <Link
                 key={link.to}
                 to={link.to}
-                className='text-white hover:text-[#60A5FA] transition-colors cursor-pointer'
+                className='cursor-pointer text-white transition-colors hover:text-[#fb923c]'
               >
                 {link.label}
               </Link>
@@ -89,12 +87,10 @@ const Header: React.FC = () => {
             <div className='flex items-center justify-between px-6 py-5 border-b border-[#1E293B] shadow-lg shadow-black/30'>
               <Link
                 to='/'
-                className='text-2xl font-bold font-mono text-white hover:text-[#60A5FA] transition-colors'
+                className='text-2xl font-bold text-white transition-colors hover:text-[#fb923c]'
                 onClick={() => setMenuOpen(false)}
               >
-                <span className='text-[#60A5FA]'>&lt;</span>
-                Abou Bakar
-                <span className='text-[#60A5FA]'>/&gt;</span>
+                <span className='text-[#fb923c]'>Abou</span> Bakar
               </Link>
               <button
                 className='w-10 h-10 flex items-center justify-center ml-2 focus:outline-none'
@@ -110,7 +106,7 @@ const Header: React.FC = () => {
                   key={link.to}
                   to={link.to}
                   onClick={() => setMenuOpen(false)}
-                  className='text-2xl font-mono text-white px-8 py-3 bg-[#181e25] rounded-lg hover:text-[#60A5FA] hover:bg-[#232b36] transition-colors tracking-wide drop-shadow-lg shadow-md'
+                  className='rounded-lg bg-[#181e25] px-8 py-3 text-2xl text-white tracking-wide shadow-md drop-shadow-lg transition-colors hover:bg-[#232b36] hover:text-[#fb923c]'
                   style={{ transitionDelay: `${idx * 60}ms` }}
                 >
                   {link.label}

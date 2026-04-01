@@ -1,70 +1,100 @@
 import React, { useEffect } from "react";
 import { motion } from "motion/react";
 
+const strengths = [
+  "Clear communication with founders and non-technical clients",
+  "Frontend and backend ownership in one workflow",
+  "Comfort with shipping MVPs quickly, then iterating",
+  "Interest in AI agents and process automation where they make business sense",
+];
+
 const About: React.FC = () => {
   useEffect(() => {
     document.title = "Abou Bakar | About";
   }, []);
 
   return (
-    <div className='min-h-screen bg-dark-900 text-white pt-24 flex items-center justify-center'>
-      <div className='container mx-auto px-6 py-16 max-w-4xl flex flex-col md:flex-row items-center gap-12 bg-dark-800 rounded-xl shadow-lg'>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7 }}
-          className='flex-shrink-0 w-40 h-40 md:w-60 md:h-60 rounded-full overflow-hidden border-4 border-[#1F2937] bg-dark-700 shadow-lg'
-        >
-          <img
-            src='/ab.jpeg'
-            alt='Abou Bakar profile'
-            className='w-full h-full object-cover object-center'
-          />
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className='flex-1'
-        >
-          <h1 className='text-4xl font-bold font-mono text-[#94A3B8] mb-4'>
-            About me
-          </h1>
-          <p className='text-lg text-white/90 mb-6 font-mono leading-relaxed'>
-            Based in Sindh, Pakistan, I build web applications and digital
-            products that focus on reliability and user experience. My main
-            stack is{" "}
-            <span className='text-[#34D399]'>
-              MongoDB, Express, React, and Node.js
-            </span>
-            , and I enjoy working on AI agent integrations and automation tools.
-            <br />
-            <br />
-            With over two years of hands-on experience, I am currently in my
-            final year at Sukkur IBA University, where I continue to expand my
-            skills in both software engineering and applied AI.
-          </p>
-          <div className='my-6 flex justify-center'>
-            <a
-              href='https://contra.com/abou_bakar_fyf4x3wq'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='flex items-center gap-2 px-6 py-3 rounded-md bg-[#18181b] hover:bg-[#232326] text-white font-mono font-semibold text-lg shadow-lg transition-all duration-200 border border-[#232326] hover:scale-105'
-              style={{ minWidth: 180 }}
-            >
-              <img src='/contra.jpeg' alt='Contra' className='w-6 h-6' />
-              Hire Me on Contra
-            </a>
-          </div>
-          <div className='flex flex-col sm:flex-row gap-4 items-center md:items-start'>
-            <span className='px-6 py-2 rounded-full bg-[#1F2937] text-[#34D399] font-bold font-mono border border-[#34D399]/30 shadow-md text-base'>
-              Available for Freelance
-            </span>
-            <span className='px-6 py-2 rounded-full bg-[#1F2937] text-[#60A5FA] font-bold font-mono border border-[#60A5FA]/30 shadow-md text-base'>
-              Open to Collaborate
-            </span>
-          </div>
-        </motion.div>
+    <div className='min-h-screen bg-dark-900 px-6 pb-16 pt-28 text-white'>
+      <div className='container mx-auto max-w-6xl'>
+        <div className='grid gap-10 rounded-[2rem] border border-white/10 bg-[#0f172a]/80 p-8 shadow-2xl shadow-black/20 md:grid-cols-[0.8fr_1.2fr] md:p-10'>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7 }}
+            className='overflow-hidden rounded-[2rem] border border-[#1f2937] bg-[#111827]'
+          >
+            <img
+              src='/ab.jpeg'
+              alt='Abou Bakar profile'
+              className='h-full w-full object-cover object-center'
+            />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+          >
+            <p className='text-sm uppercase tracking-[0.3em] text-[#94a3b8]'>
+              About
+            </p>
+            <h1 className='mt-4 text-4xl font-bold text-white md:text-5xl'>
+              Developer focused on startup execution, not just portfolio aesthetics.
+            </h1>
+            <div className='mt-6 space-y-5 text-base leading-8 text-slate-300'>
+              <p>
+                I am based in Sindh, Pakistan and work with startups and small
+                businesses that need web products shipped with speed and
+                practicality. My strongest stack is MongoDB, Express, React,
+                Node.js, and Next.js.
+              </p>
+              <p>
+                I have spent the last few years building product-style projects,
+                learning deployment, refining UI work, and moving deeper into AI
+                agents and automation. The work I enjoy most is where there is a
+                real business problem and a short path from idea to usable product.
+              </p>
+              <p>
+                If someone reaches out from LinkedIn, a cold email, or a referral,
+                I want this page to answer the real question: can this developer
+                understand the product and ship it responsibly? That is the standard
+                I am optimizing for.
+              </p>
+            </div>
+
+            <div className='mt-8 grid gap-4 sm:grid-cols-2'>
+              {strengths.map((item) => (
+                <div
+                  key={item}
+                  className='rounded-2xl border border-[#233047] bg-[#111827] p-4 text-sm leading-7 text-slate-200'
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+
+            <div className='mt-8 flex flex-wrap gap-4'>
+              <span className='rounded-full border border-[#22c55e]/30 bg-[#052e16] px-5 py-2 text-sm font-semibold text-[#86efac]'>
+                Available for freelance
+              </span>
+              <span className='rounded-full border border-[#38bdf8]/30 bg-[#082f49] px-5 py-2 text-sm font-semibold text-[#7dd3fc]'>
+                Open to startup work
+              </span>
+            </div>
+
+            <div className='mt-8'>
+              <a
+                href='https://contra.com/abou_bakar_fyf4x3wq'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='inline-flex items-center gap-3 rounded-xl border border-[#2b3340] bg-[#18181b] px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-[#232326]'
+              >
+                <img src='/contra.jpeg' alt='Contra' className='h-6 w-6' />
+                Hire me on Contra
+              </a>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </div>
   );

@@ -1,129 +1,175 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { motion } from "motion/react";
+import { FaArrowRight } from "react-icons/fa";
 
-interface Repo {
-  id: number;
-  name: string;
-  html_url: string;
-  description: string;
-  language: string;
-  stargazers_count: number;
-}
+const featuredProjects = [
+  {
+    title: "Droplr",
+    label: "Privacy-focused file sharing",
+    image: "/droplr.jpeg",
+    description:
+      "A location-based file sharing app designed for quick transfers between nearby users, with automatic expiry for cleaner privacy controls.",
+    outcome:
+      "Shows product thinking around real-time behavior, constrained access, and a focused mobile-first use case.",
+    stack: ["MongoDB", "Express", "React", "Node.js", "Tailwind CSS"],
+    liveUrl: "https://droplr-front.vercel.app/",
+    repoUrl: "http://github.com/AboubakarArisar/Droplr",
+  },
+  {
+    title: "NoteSwap",
+    label: "Notes marketplace for students",
+    image: "/noteswap.jpeg",
+    description:
+      "A structured sharing platform where students earn points by uploading notes and use those points to access other content.",
+    outcome:
+      "Demonstrates marketplace logic, incentives, content organization, and full-stack product execution.",
+    stack: ["MongoDB", "Express", "React", "Node.js", "Tailwind CSS"],
+    liveUrl: "https://noteswap-sigma.vercel.app/",
+    repoUrl: "https://github.com/AboubakarArisar/NoteSwap-Frontend",
+  },
+];
 
-const GITHUB_USERNAME = "AboubakarArisar";
-const PER_PAGE = 9;
+const projectFit = [
+  "Founder needs an MVP shipped fast",
+  "Small business needs a custom dashboard or portal",
+  "Team wants backend APIs and integrations cleaned up",
+  "Product needs AI automation added without overengineering",
+];
 
 const Projects: React.FC = () => {
-  const [repos, setRepos] = useState<Repo[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [page, setPage] = useState(1);
-  const [hasNext, setHasNext] = useState(false);
-  const [hasPrev, setHasPrev] = useState(false);
-
   useEffect(() => {
     document.title = "Abou Bakar | Projects";
-    setLoading(true);
-    fetch(
-      `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=${PER_PAGE}&page=${page}`
-    )
-      .then((res) => {
-        // Check if there are more pages using the Link header
-        const link = res.headers.get("Link");
-        setHasNext(!!(link && link.includes('rel="next"')));
-        setHasPrev(page > 1);
-        return res.json();
-      })
-      .then((data) => {
-        setRepos(data);
-        setLoading(false);
-      });
-  }, [page]);
+  }, []);
 
   return (
-    <div className='min-h-screen bg-dark-900 pt-24 pb-16 px-4'>
-      <div className='container mx-auto max-w-7xl'>
-        <h1 className='text-4xl md:text-5xl font-bold font-mono text-[#94A3B8] mb-12 text-center'>
-          My GitHub Projects
-        </h1>
-        {loading ? (
-          <div className='flex justify-center items-center h-64'>
-            <span className='text-lg text-gray-400 font-mono'>
-              Loading projects...
-            </span>
-          </div>
-        ) : (
-          <>
-            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8'>
-              {repos.map((repo, idx) => (
-                <motion.div
-                  key={repo.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: idx * 0.07, duration: 0.5 }}
-                  viewport={{ once: true }}
-                  className='relative group bg-dark-800/80 border border-[#1E293B] rounded-2xl shadow-lg p-6 flex flex-col justify-between overflow-hidden hover:shadow-2xl hover:border-[#94A3B8]/40 transition-all duration-300'
-                >
-                  <div className='flex-1'>
-                    <h2 className='text-2xl font-bold font-mono text-white mb-2 group-hover:text-[#60A5FA] transition-colors'>
-                      {repo.name}
-                    </h2>
-                    <p className='text-gray-300 text-base mb-4 min-h-[48px]'>
-                      {repo.description || "No description provided."}
+    <div className='min-h-screen bg-dark-900 px-6 pb-16 pt-28 text-white'>
+      <div className='container mx-auto max-w-6xl'>
+        <div className='max-w-3xl'>
+          <p className='text-sm uppercase tracking-[0.3em] text-[#94a3b8]'>
+            Case Studies
+          </p>
+          <h1 className='mt-4 text-4xl font-bold text-white md:text-6xl'>
+            Projects that show how I build products, not just screens.
+          </h1>
+          <p className='mt-6 text-base leading-8 text-slate-300 md:text-lg'>
+            If someone lands here from a DM or cold email, this page should make one
+            thing clear: I can take an idea, design the workflow, build the product,
+            and get it live.
+          </p>
+        </div>
+
+        <div className='mt-12 grid gap-8'>
+          {featuredProjects.map((project, index) => (
+            <motion.article
+              key={project.title}
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, delay: index * 0.12 }}
+              className='overflow-hidden rounded-[2rem] border border-white/10 bg-[#0f172a]/85'
+            >
+              <div className='grid gap-0 lg:grid-cols-[0.95fr_1.05fr]'>
+                <div className='aspect-[16/10] overflow-hidden lg:aspect-auto lg:h-full'>
+                  <img
+                    src={project.image}
+                    alt={`${project.title} screenshot`}
+                    className='h-full w-full object-cover'
+                  />
+                </div>
+                <div className='p-8 md:p-10'>
+                  <p className='text-sm uppercase tracking-[0.25em] text-[#cbd5e1]'>
+                    {project.label}
+                  </p>
+                  <h2 className='mt-4 text-3xl font-semibold text-white md:text-4xl'>
+                    {project.title}
+                  </h2>
+                  <p className='mt-5 text-sm leading-7 text-slate-300 md:text-base'>
+                    {project.description}
+                  </p>
+                  <div className='mt-6 rounded-2xl border border-[#233047] bg-[#111827] p-5'>
+                    <p className='text-sm font-semibold uppercase tracking-[0.2em] text-[#cbd5e1]'>
+                      Why it matters
+                    </p>
+                    <p className='mt-3 text-sm leading-7 text-slate-300 md:text-base'>
+                      {project.outcome}
                     </p>
                   </div>
-                  <div className='flex items-center justify-between mt-4'>
-                    <span className='inline-block px-3 py-1 rounded-full bg-dark-700 text-xs font-mono text-gray-300 border border-[#374151]'>
-                      {repo.language || "Other"}
-                    </span>
-                    <span className='inline-flex items-center gap-1 text-xs text-[#FBBF24] font-mono'>
-                      ★ {repo.stargazers_count}
-                    </span>
+                  <div className='mt-6 flex flex-wrap gap-2'>
+                    {project.stack.map((item) => (
+                      <span
+                        key={item}
+                        className='rounded-full border border-[#334155] bg-[#020617] px-3 py-1 text-xs text-slate-200'
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                  <div className='mt-8 flex flex-wrap gap-4'>
                     <a
-                      href={repo.html_url}
+                      href={project.liveUrl}
                       target='_blank'
                       rel='noopener noreferrer'
-                      className='ml-2 px-4 py-2 rounded-lg bg-[#1F2937] text-white font-bold font-mono border border-white/10 hover:bg-[#374151] hover:border-white/20 transition-all duration-200 text-xs'
+                      className='inline-flex items-center gap-2 rounded-xl bg-[#f97316] px-5 py-3 text-sm font-semibold text-slate-950 transition-all duration-300 hover:bg-[#fb923c]'
                     >
-                      GitHub ↗
+                      Open live project
+                      <FaArrowRight />
+                    </a>
+                    <a
+                      href={project.repoUrl}
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      className='inline-flex items-center gap-2 rounded-xl border border-[#334155] bg-[#111827] px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-[#1f2937]'
+                    >
+                      View source
                     </a>
                   </div>
-                  <motion.div
-                    className='absolute -bottom-8 -right-8 w-32 h-32 bg-[#1F2937]/30 rounded-full blur-2xl opacity-60 group-hover:scale-110 transition-transform duration-500'
-                    animate={{ scale: [1, 1.1, 1] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  />
-                </motion.div>
+                </div>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+
+        <div className='mt-14 grid gap-8 rounded-[2rem] border border-white/10 bg-[#111827]/80 p-8 md:grid-cols-[1.1fr_0.9fr] md:p-10'>
+          <div>
+            <p className='text-sm uppercase tracking-[0.3em] text-[#94a3b8]'>
+              Best project fit
+            </p>
+            <h2 className='mt-4 text-3xl font-bold text-white'>
+              The work I am most useful for
+            </h2>
+            <div className='mt-6 grid gap-4'>
+              {projectFit.map((item) => (
+                <div
+                  key={item}
+                  className='rounded-2xl border border-[#233047] bg-[#0f172a] p-4 text-sm leading-7 text-slate-200'
+                >
+                  {item}
+                </div>
               ))}
             </div>
-            <div className='flex justify-center items-center gap-4 mt-12'>
-              <button
-                onClick={() => setPage((p) => Math.max(1, p - 1))}
-                disabled={!hasPrev}
-                className={`px-5 py-2 cursor-pointer rounded-lg font-mono border border-[#374151] bg-dark-700 text-white transition-all duration-200 ${
-                  !hasPrev
-                    ? "opacity-40 cursor-not-allowed"
-                    : "hover:bg-[#23272b]"
-                }`}
+          </div>
+
+          <div className='rounded-[1.5rem] border border-[#334155] bg-[#020617] p-6'>
+            <p className='text-sm uppercase tracking-[0.25em] text-[#cbd5e1]'>
+              Hiring note
+            </p>
+            <h3 className='mt-4 text-2xl font-semibold text-white'>
+              Need a developer who can own the build?
+            </h3>
+            <p className='mt-4 text-sm leading-7 text-slate-300'>
+              Send your product idea, current stage, and deadline. I can help with
+              MVP builds, feature development, backend work, and selected AI
+              automation.
+            </p>
+            <div className='mt-6'>
+              <a
+                href='mailto:aboubakar.dev@gmail.com?subject=Project%20Scope%20Request'
+                className='inline-flex items-center gap-2 rounded-xl bg-[#e2e8f0] px-5 py-3 text-sm font-semibold text-slate-950 transition-all duration-300 hover:bg-white'
               >
-                Previous
-              </button>
-              <span className='text-gray-400 font-mono text-lg'>
-                Page {page}
-              </span>
-              <button
-                onClick={() => setPage((p) => p + 1)}
-                disabled={!hasNext}
-                className={`px-5 py-2 cursor-pointer rounded-lg font-mono border border-[#374151] bg-dark-700 text-white transition-all duration-200 ${
-                  !hasNext
-                    ? "opacity-40 cursor-not-allowed"
-                    : "hover:bg-[#23272b]"
-                }`}
-              >
-                Next
-              </button>
+                Send project scope
+              </a>
             </div>
-          </>
-        )}
+          </div>
+        </div>
       </div>
     </div>
   );
