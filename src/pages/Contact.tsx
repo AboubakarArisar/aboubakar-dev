@@ -1,11 +1,33 @@
 import React, { useEffect, useState } from "react";
-import { motion } from "motion/react";
 import { PopupModal } from "react-calendly";
-import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaEnvelope, FaGithub, FaLinkedin, FaArrowRight } from "react-icons/fa";
+import Reveal from "../components/ui/Reveal";
+import SectionLabel from "../components/ui/SectionLabel";
+
+const contactMethods = [
+  {
+    icon: FaEnvelope,
+    label: "Email",
+    value: "aboubakar.dev@gmail.com",
+    href: "mailto:aboubakar.dev@gmail.com",
+  },
+  {
+    icon: FaLinkedin,
+    label: "LinkedIn",
+    value: "/in/aboubakarisar",
+    href: "https://linkedin.com/in/aboubakarisar",
+  },
+  {
+    icon: FaGithub,
+    label: "GitHub",
+    value: "/AboubakarArisar",
+    href: "https://github.com/AboubakarArisar",
+  },
+];
 
 const Contact: React.FC = () => {
   useEffect(() => {
-    document.title = "Abou Bakar | Contact";
+    document.title = "Aboubakar — Contact";
   }, []);
 
   const [formData, setFormData] = useState({
@@ -20,212 +42,196 @@ const Contact: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
     const subject = encodeURIComponent(
       `Project Inquiry from ${formData.name || "Website Visitor"}`
     );
     const body = encodeURIComponent(
       `Name: ${formData.name}\nEmail: ${formData.email}\nCompany: ${formData.company}\n\nProject details:\n${formData.message}`
     );
-
     window.location.href = `mailto:aboubakar.dev@gmail.com?subject=${subject}&body=${body}`;
   };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setFormData((current) => ({
-      ...current,
-      [e.target.name]: e.target.value,
-    }));
+    setFormData((current) => ({ ...current, [e.target.name]: e.target.value }));
   };
 
+  const inputClass =
+    "w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-white placeholder:text-slate-500 outline-none transition-all duration-300 focus:border-white/35 focus:bg-white/[0.05] focus:shadow-[0_0_0_3px_rgba(244,241,234,0.12)]";
+
   return (
-    <div className='min-h-screen bg-dark-900 px-6 pt-28 text-white'>
-      <div className='container mx-auto max-w-6xl pb-16'>
-        <div className='grid gap-8 lg:grid-cols-[0.95fr_1.05fr]'>
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7 }}
-            className='rounded-[2rem] border border-white/10 bg-[#0f172a]/85 p-8 md:p-10'
-          >
-            <p className='text-sm uppercase tracking-[0.3em] text-[#94a3b8]'>
-              Contact
-            </p>
-            <h1 className='mt-4 text-4xl font-bold text-white md:text-6xl'>
-              Send the project details and I will reply with a practical next step.
-            </h1>
-            <p className='mt-6 text-base leading-8 text-slate-300'>
-              Best inquiries include what you are building, what is blocked right
-              now, your timeline, and whether you need frontend, backend, or full
-              product development.
-            </p>
+    <div className='relative px-6 pb-20 pt-36 text-white md:pt-44'>
+      <div className='mx-auto max-w-6xl'>
+        <Reveal className='max-w-3xl'>
+          <SectionLabel>Get in touch</SectionLabel>
+          <h1 className='mt-5 text-4xl font-bold tracking-tight md:text-6xl'>
+            <span className='text-gradient'>Let's turn your idea into</span>{" "}
+            <span className='text-accent'>a shipped product.</span>
+          </h1>
+          <p className='mt-6 text-lg leading-8 text-slate-300'>
+            The best inquiries say what you're building, what's blocked, your
+            timeline, and whether you need frontend, backend or full product
+            development.
+          </p>
+        </Reveal>
 
-            <div className='mt-8 grid gap-4'>
-              <div className='rounded-2xl border border-[#233047] bg-[#111827] p-5'>
-                <p className='text-sm uppercase tracking-[0.25em] text-[#cbd5e1]'>
-                  Good fit
+        <div className='mt-14 grid gap-8 lg:grid-cols-[0.85fr_1.15fr]'>
+          {/* left: methods */}
+          <Reveal>
+            <div className='flex h-full flex-col gap-4'>
+              {contactMethods.map((m) => {
+                const Icon = m.icon;
+                return (
+                  <a
+                    key={m.label}
+                    href={m.href}
+                    target={m.href.startsWith("http") ? "_blank" : undefined}
+                    rel='noopener noreferrer'
+                    className='group flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.02] p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-white/25 hover:bg-white/[0.035]'
+                  >
+                    <span className='icon-tile h-12 w-12 text-lg'>
+                      <Icon />
+                    </span>
+                    <span className='min-w-0'>
+                      <span className='block text-xs uppercase tracking-wider text-slate-400'>
+                        {m.label}
+                      </span>
+                      <span className='block truncate text-sm font-medium text-white'>
+                        {m.value}
+                      </span>
+                    </span>
+                    <FaArrowRight className='ml-auto text-slate-500 transition-all duration-300 group-hover:translate-x-1 group-hover:text-white' />
+                  </a>
+                );
+              })}
+
+              <div className='mt-2 rounded-2xl border border-white/10 bg-white/[0.03] p-6'>
+                <p className='text-xs uppercase tracking-[0.2em] text-[#b8b2a4]'>
+                  Prefer a call?
                 </p>
                 <p className='mt-3 text-sm leading-7 text-slate-300'>
-                  MVP builds, startup product work, backend APIs, dashboards,
-                  automations, and product improvements that need fast execution.
+                  Book a short intro call if your scope is already clear and you
+                  want to discuss delivery.
                 </p>
-              </div>
-              <div className='rounded-2xl border border-[#233047] bg-[#111827] p-5'>
-                <p className='text-sm uppercase tracking-[0.25em] text-[#cbd5e1]'>
-                  Fastest way
-                </p>
-                <p className='mt-3 text-sm leading-7 text-slate-300'>
-                  Use the form, email me directly, or book a short call if the scope
-                  is already clear.
-                </p>
+                <button
+                  type='button'
+                  onClick={() => setCalendlyOpen(true)}
+                  className='mt-4 inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition-colors duration-300 hover:bg-white/10'
+                >
+                  Schedule a call
+                  <FaArrowRight className='text-xs' />
+                </button>
               </div>
             </div>
+          </Reveal>
 
-            <div className='mt-8 flex flex-col gap-4 text-sm text-slate-300'>
-              <a
-                href='mailto:aboubakar.dev@gmail.com'
-                className='inline-flex items-center gap-3 hover:text-white'
-              >
-                <FaEnvelope />
-                aboubakar.dev@gmail.com
-              </a>
-              <a
-                href='https://linkedin.com/in/aboubakarisar'
-                target='_blank'
-                rel='noopener noreferrer'
-                className='inline-flex items-center gap-3 hover:text-white'
-              >
-                <FaLinkedin />
-                LinkedIn profile
-              </a>
-              <a
-                href='https://github.com/AboubakarArisar'
-                target='_blank'
-                rel='noopener noreferrer'
-                className='inline-flex items-center gap-3 hover:text-white'
-              >
-                <FaGithub />
-                GitHub profile
-              </a>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className='rounded-[2rem] border border-white/10 bg-[#111827]/80 p-8 md:p-10'
-          >
-            <form onSubmit={handleSubmit} className='space-y-5'>
-              <div>
-                <label htmlFor='name' className='mb-2 block text-sm text-slate-300'>
-                  Name
-                </label>
-                <input
-                  type='text'
-                  id='name'
-                  name='name'
-                  value={formData.name}
-                  onChange={handleChange}
-                  className='w-full rounded-xl border border-[#334155] bg-[#020617] px-4 py-3 text-white outline-none transition-colors focus:border-[#f97316]'
-                  required
-                />
-              </div>
-
-              <div className='grid gap-5 md:grid-cols-2'>
+          {/* right: form */}
+          <Reveal delay={0.1}>
+            <form
+              onSubmit={handleSubmit}
+              className='border-gradient rounded-[2rem] glass-strong p-8 md:p-10'
+            >
+              <div className='space-y-5'>
                 <div>
                   <label
-                    htmlFor='email'
+                    htmlFor='name'
                     className='mb-2 block text-sm text-slate-300'
                   >
-                    Email
-                  </label>
-                  <input
-                    type='email'
-                    id='email'
-                    name='email'
-                    value={formData.email}
-                    onChange={handleChange}
-                    className='w-full rounded-xl border border-[#334155] bg-[#020617] px-4 py-3 text-white outline-none transition-colors focus:border-[#f97316]'
-                    required
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor='company'
-                    className='mb-2 block text-sm text-slate-300'
-                  >
-                    Company or product
+                    Name
                   </label>
                   <input
                     type='text'
-                    id='company'
-                    name='company'
-                    value={formData.company}
+                    id='name'
+                    name='name'
+                    value={formData.name}
                     onChange={handleChange}
-                    className='w-full rounded-xl border border-[#334155] bg-[#020617] px-4 py-3 text-white outline-none transition-colors focus:border-[#f97316]'
+                    placeholder='Jane Founder'
+                    className={inputClass}
+                    required
                   />
                 </div>
-              </div>
 
-              <div>
-                <label
-                  htmlFor='message'
-                  className='mb-2 block text-sm text-slate-300'
+                <div className='grid gap-5 md:grid-cols-2'>
+                  <div>
+                    <label
+                      htmlFor='email'
+                      className='mb-2 block text-sm text-slate-300'
+                    >
+                      Email
+                    </label>
+                    <input
+                      type='email'
+                      id='email'
+                      name='email'
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder='you@company.com'
+                      className={inputClass}
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor='company'
+                      className='mb-2 block text-sm text-slate-300'
+                    >
+                      Company or product
+                    </label>
+                    <input
+                      type='text'
+                      id='company'
+                      name='company'
+                      value={formData.company}
+                      onChange={handleChange}
+                      placeholder='Acme Inc.'
+                      className={inputClass}
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label
+                    htmlFor='message'
+                    className='mb-2 block text-sm text-slate-300'
+                  >
+                    Project brief
+                  </label>
+                  <textarea
+                    id='message'
+                    name='message'
+                    value={formData.message}
+                    onChange={handleChange}
+                    rows={6}
+                    placeholder='What are you building, what do you need help with, and what is the timeline?'
+                    className={`${inputClass} resize-none`}
+                    required
+                  />
+                </div>
+
+                <button
+                  type='submit'
+                  className='btn-primary group w-full px-6 py-4 text-sm'
                 >
-                  Project brief
-                </label>
-                <textarea
-                  id='message'
-                  name='message'
-                  value={formData.message}
-                  onChange={handleChange}
-                  rows={7}
-                  placeholder='What are you building, what do you need help with, and what is the timeline?'
-                  className='w-full resize-none rounded-xl border border-[#334155] bg-[#020617] px-4 py-3 text-white outline-none transition-colors focus:border-[#f97316]'
-                  required
-                />
+                  Send inquiry
+                  <FaArrowRight className='transition-transform duration-300 group-hover:translate-x-1' />
+                </button>
               </div>
-
-              <button
-                type='submit'
-                className='w-full rounded-xl bg-[#f97316] px-6 py-4 text-sm font-semibold text-slate-950 transition-all duration-300 hover:bg-[#fb923c]'
-              >
-                Send inquiry by email
-              </button>
             </form>
-
-            <div className='mt-6 rounded-2xl border border-[#233047] bg-[#020617] p-5'>
-              <p className='text-sm uppercase tracking-[0.25em] text-[#cbd5e1]'>
-                Prefer a call?
-              </p>
-              <p className='mt-3 text-sm leading-7 text-slate-300'>
-                Book a short intro call if you already have the project scope in
-                mind and want to discuss delivery.
-              </p>
-              <button
-                type='button'
-                onClick={() => setCalendlyOpen(true)}
-                className='mt-4 inline-flex items-center justify-center rounded-xl border border-[#334155] bg-[#111827] px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-[#1f2937]'
-              >
-                Schedule a call
-              </button>
-              <PopupModal
-                url='https://calendly.com/aboubakar-dev/30min'
-                onModalClose={() => setCalendlyOpen(false)}
-                open={isCalendlyOpen}
-                rootElement={rootElement}
-                pageSettings={{
-                  backgroundColor: "0f172a",
-                  textColor: "ffffff",
-                  primaryColor: "f97316",
-                }}
-              />
-            </div>
-          </motion.div>
+          </Reveal>
         </div>
+
+        <PopupModal
+          url='https://calendly.com/aboubakar-dev/30min'
+          onModalClose={() => setCalendlyOpen(false)}
+          open={isCalendlyOpen}
+          rootElement={rootElement}
+          pageSettings={{
+            backgroundColor: "141416",
+            textColor: "ffffff",
+            primaryColor: "e8e2d2",
+          }}
+        />
       </div>
     </div>
   );
