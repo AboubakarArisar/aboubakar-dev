@@ -28,7 +28,8 @@ const skills = [
   { name: "Frontend — React / Next.js / Tailwind", level: 92 },
   { name: "Backend — Node / Express / APIs", level: 90 },
   { name: "Databases — MongoDB / PostgreSQL", level: 85 },
-  { name: "AI & Automation — Agents / LLMs", level: 78 },
+  { name: "API Design & Integration", level: 90 },
+  { name: "Deployment & DevOps", level: 90 },
 ];
 
 const About: React.FC = () => {
