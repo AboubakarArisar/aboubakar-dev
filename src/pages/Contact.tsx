@@ -42,13 +42,14 @@ const Contact: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(
-      `Project Inquiry from ${formData.name || "Website Visitor"}`
-    );
+   
     const body = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\nCompany: ${formData.company}\n\nProject details:\n${formData.message}`
+      `visitor from portfolio\nName: ${formData.name}\nEmail: ${formData.email}\nCompany: ${formData.company}\n\nProject details:\n${formData.message}`
     );
-    window.location.href = `mailto:aboubakar.dev@gmail.com?subject=${subject}&body=${body}`;
+
+    // Alternatively, you could send this data to whatsapp
+    const whatsappurl = `https://wa.me/03483624912?text=${body}`;
+    window.open(whatsappurl, "_blank");
   };
 
   const handleChange = (
