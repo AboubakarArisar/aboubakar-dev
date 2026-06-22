@@ -217,7 +217,7 @@ const Homepage: React.FC = () => {
                 </Link>
               </Magnetic>
               <Magnetic>
-                <Link to='/projects' className='btn-ghost px-7 py-4 text-base'>
+                <Link to='/projects' className='btn-ghost px-7 py-4 text-[#f4f1ea]'>
                   View work
                 </Link>
               </Magnetic>
