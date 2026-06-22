@@ -62,7 +62,7 @@ const Contact: React.FC = () => {
     "w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-white placeholder:text-slate-500 outline-none transition-all duration-300 focus:border-white/35 focus:bg-white/[0.05] focus:shadow-[0_0_0_3px_rgba(244,241,234,0.12)]";
 
   return (
-    <div className='relative px-6 pb-20 pt-36 text-white md:pt-44'>
+    <div className='relative px-5 pb-20 pt-28 text-white sm:px-6 sm:pt-36 md:pt-44'>
       <div className='mx-auto max-w-6xl'>
         <Reveal className='max-w-3xl'>
           <SectionLabel>Get in touch</SectionLabel>
@@ -131,7 +131,7 @@ const Contact: React.FC = () => {
           <Reveal delay={0.1}>
             <form
               onSubmit={handleSubmit}
-              className='border-gradient rounded-[2rem] glass-strong p-8 md:p-10'
+              className='border-gradient rounded-[2rem] glass-strong p-6 sm:p-8 md:p-10'
             >
               <div className='space-y-5'>
                 <div>

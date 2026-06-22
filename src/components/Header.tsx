@@ -33,12 +33,12 @@ const Header: React.FC = () => {
       initial={{ y: -90, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className='fixed inset-x-0 top-0 z-50 px-4 pt-4'
+      className='fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-4 sm:pt-4'
     >
       <nav
-        className={`mx-auto flex max-w-6xl items-center justify-between rounded-2xl px-5 py-3 transition-all duration-300 ${
+        className={`mx-auto flex max-w-6xl items-center justify-between rounded-2xl px-4 py-2.5 transition-all duration-300 sm:px-5 sm:py-3 ${
           scrolled
-            ? "glass-strong shadow-[0_8px_40px_-12px_rgba(124,58,237,0.4)]"
+            ? "glass-strong shadow-[0_8px_40px_-12px_rgba(0,0,0,0.6)]"
             : "border border-transparent bg-transparent"
         }`}
       >

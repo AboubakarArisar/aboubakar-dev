@@ -38,7 +38,7 @@ const About: React.FC = () => {
   }, []);
 
   return (
-    <div className='relative px-6 pb-20 pt-36 text-white md:pt-44'>
+    <div className='relative px-5 pb-20 pt-28 text-white sm:px-6 sm:pt-36 md:pt-44'>
       <div className='mx-auto max-w-6xl'>
         <Reveal className='max-w-3xl'>
           <SectionLabel>About me</SectionLabel>

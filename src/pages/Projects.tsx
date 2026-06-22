@@ -60,7 +60,7 @@ const Projects: React.FC = () => {
   }, []);
 
   return (
-    <div className='relative px-6 pb-20 pt-36 text-white md:pt-44'>
+    <div className='relative px-5 pb-20 pt-28 text-white sm:px-6 sm:pt-36 md:pt-44'>
       <div className='mx-auto max-w-6xl'>
         <Reveal className='max-w-3xl'>
           <SectionLabel>Case studies</SectionLabel>
@@ -169,7 +169,7 @@ const Projects: React.FC = () => {
 
         {/* fit + CTA */}
         <Reveal className='mt-20'>
-          <div className='grid gap-8 rounded-[2rem] border border-white/10 bg-white/[0.025] p-8 md:grid-cols-[1.1fr_0.9fr] md:p-12'>
+          <div className='grid gap-8 rounded-[2rem] border border-white/10 bg-white/[0.025] p-6 sm:p-8 md:grid-cols-[1.1fr_0.9fr] md:p-12'>
             <div>
               <SectionLabel>Best fit</SectionLabel>
               <h2 className='mt-4 text-3xl font-bold tracking-tight'>
@@ -190,7 +190,7 @@ const Projects: React.FC = () => {
               </div>
             </div>
 
-            <div className='flex flex-col justify-center rounded-[1.5rem] border border-white/10 bg-white/[0.03] p-8'>
+            <div className='flex flex-col justify-center rounded-[1.5rem] border border-white/10 bg-white/[0.03] p-6 sm:p-8'>
               <h3 className='text-2xl font-semibold text-white'>
                 Need someone to own the build?
               </h3>

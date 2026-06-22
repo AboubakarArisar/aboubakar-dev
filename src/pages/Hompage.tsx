@@ -156,8 +156,8 @@ const Homepage: React.FC = () => {
   return (
     <div className='relative text-white'>
       {/* ============ HERO ============ */}
-      <section className='relative mx-auto max-w-6xl px-6 pb-16 pt-36 md:pt-44'>
-        <div className='grid items-center gap-14 lg:grid-cols-[1.15fr_0.85fr]'>
+      <section className='relative mx-auto max-w-6xl px-5 pb-16 pt-28 sm:px-6 sm:pt-36 md:pt-44'>
+        <div className='grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14'>
           <div>
             <motion.div
               initial={{ opacity: 0, y: 16 }}
@@ -176,7 +176,7 @@ const Homepage: React.FC = () => {
               variants={headlineContainer}
               initial='hidden'
               animate='show'
-              className='mt-6 max-w-2xl text-[2.6rem] font-bold leading-[1.05] tracking-tight text-[#f4f1ea] md:text-6xl'
+              className='mt-6 max-w-2xl text-balance break-words text-[2rem] font-bold leading-[1.08] tracking-tight text-[#f4f1ea] sm:text-[2.6rem] sm:leading-[1.05] md:text-6xl'
             >
               {headline.split(" ").map((word, i) => (
                 <motion.span
@@ -317,12 +317,12 @@ const Homepage: React.FC = () => {
 
       {/* ============ SKILLS MARQUEE ============ */}
       <section className='py-12'>
-        <div className='mx-auto mb-8 max-w-6xl px-6'>
+        <div className='mx-auto mb-8 max-w-6xl px-5 sm:px-6'>
           <SectionLabel>The stack</SectionLabel>
         </div>
         <div className='pause-on-hover relative flex flex-col gap-4'>
-          <div className='pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-[#0a0a0b] to-transparent' />
-          <div className='pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-[#0a0a0b] to-transparent' />
+          <div className='pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-[#0a0a0b] to-transparent sm:w-24' />
+          <div className='pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-[#0a0a0b] to-transparent sm:w-24' />
 
           <Marquee items={frontendStack} />
           <Marquee items={backendStack} reverse />
@@ -330,7 +330,7 @@ const Homepage: React.FC = () => {
       </section>
 
       {/* ============ SERVICES ============ */}
-      <section className='mx-auto max-w-6xl px-6 py-20'>
+      <section className='mx-auto max-w-6xl px-5 py-20 sm:px-6'>
         <Reveal className='mb-12 max-w-2xl'>
           <SectionLabel>What I do</SectionLabel>
           <h2 className='mt-4 text-3xl font-bold tracking-tight md:text-5xl'>
@@ -368,7 +368,7 @@ const Homepage: React.FC = () => {
       </section>
 
       {/* ============ SELECTED WORK ============ */}
-      <section className='mx-auto max-w-6xl px-6 py-20'>
+      <section className='mx-auto max-w-6xl px-5 py-20 sm:px-6'>
         <Reveal className='mb-12 flex flex-col gap-5 md:flex-row md:items-end md:justify-between'>
           <div className='max-w-2xl'>
             <SectionLabel>Selected work</SectionLabel>
@@ -442,7 +442,7 @@ const Homepage: React.FC = () => {
       </section>
 
       {/* ============ CTA ============ */}
-      <section className='mx-auto max-w-6xl px-6 py-20'>
+      <section className='mx-auto max-w-6xl px-5 py-20 sm:px-6'>
         <Reveal>
           <div className='border-gradient glass-strong relative overflow-hidden rounded-[2rem] p-10 text-center md:p-16'>
             <div
