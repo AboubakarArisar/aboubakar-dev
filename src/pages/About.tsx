@@ -63,7 +63,7 @@ const About: React.FC = () => {
               />
               <div className='flex flex-wrap gap-2 p-5'>
                 <span className='rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-xs font-medium text-emerald-300'>
-                  ● Available for freelance
+                  ● Available for Opportunities
                 </span>
                 <span className='rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-medium text-paper'>
                   Sindh, Pakistan
