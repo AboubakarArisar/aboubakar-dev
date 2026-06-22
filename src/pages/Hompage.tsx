@@ -469,7 +469,7 @@ const Homepage: React.FC = () => {
               </Magnetic>
               <a
                 href='mailto:aboubakar.dev@gmail.com'
-                className='btn-ghost px-8 py-4 text-base'
+                className='btn-ghost px-8 py-4 text-[#f4f1ea]'
               >
                 aboubakar.dev@gmail.com
               </a>
