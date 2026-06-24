@@ -320,7 +320,7 @@ const Homepage: React.FC = () => {
         <div className='mx-auto mb-8 max-w-6xl px-5 sm:px-6'>
           <SectionLabel>The stack</SectionLabel>
         </div>
-        <div className='pause-on-hover relative flex flex-col gap-4'>
+        <div className='pause-on-hover relative flex flex-col gap-4 overflow-hidden'>
           <div className='pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-[#0a0a0b] to-transparent sm:w-24' />
           <div className='pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-[#0a0a0b] to-transparent sm:w-24' />
 
