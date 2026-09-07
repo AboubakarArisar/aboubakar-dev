@@ -66,11 +66,11 @@ const Contact: React.FC = () => {
       <div className='mx-auto max-w-6xl'>
         <Reveal className='max-w-3xl'>
           <SectionLabel>Get in touch</SectionLabel>
-          <h1 className='mt-5 text-4xl font-bold tracking-tight md:text-6xl'>
+          <h1 className='mt-5'>
             <span className='text-gradient'>Let's turn your idea into</span>{" "}
             <span className='text-accent'>a shipped product.</span>
           </h1>
-          <p className='mt-6 text-lg leading-8 text-slate-300'>
+          <p className='mt-6 text-body text-slate-300'>
             The best inquiries say what you're building, what's blocked, your
             timeline, and whether you need frontend, backend or full product
             development.
@@ -95,7 +95,7 @@ const Contact: React.FC = () => {
                       <Icon />
                     </span>
                     <span className='min-w-0'>
-                      <span className='block text-xs uppercase tracking-wider text-slate-400'>
+                      <span className='block font-mono text-xs uppercase tracking-wider text-slate-400'>
                         {m.label}
                       </span>
                       <span className='block truncate text-sm font-medium text-white'>
@@ -108,10 +108,10 @@ const Contact: React.FC = () => {
               })}
 
               <div className='mt-2 rounded-2xl border border-white/10 bg-white/[0.03] p-6'>
-                <p className='text-xs uppercase tracking-[0.2em] text-[#b8b2a4]'>
+                <p className='font-mono text-xs uppercase tracking-[0.2em] text-[#b8b2a4]'>
                   Prefer a call?
                 </p>
-                <p className='mt-3 text-sm leading-7 text-slate-300'>
+                <p className='mt-3 text-body text-slate-300'>
                   Book a short intro call if your scope is already clear and you
                   want to discuss delivery.
                 </p>

@@ -8,8 +8,8 @@
 
 @theme {
   --font-sans: "Inter", system-ui, sans-serif;
-  --font-display: "Space Grotesk", "Inter", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-display: "Inter", system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
 
   /* surfaces */
   --color-base: #0a0a0b;
@@ -46,6 +46,9 @@
     color: #ece9e1;
     min-height: 100vh;
     font-family: var(--font-sans);
+    font-size: clamp(17px, 1.5vw, 20px);
+    font-weight: 400;
+    line-height: 1.6;
     overflow-x: hidden;
     width: 100%;
     max-width: 100%;
@@ -73,8 +76,21 @@
   h3,
   h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.025em;
+    letter-spacing: -0.045em;
     color: #f4f1ea;
+  }
+
+  h1 {
+    font-size: clamp(64px, 10vw, 150px);
+    font-weight: 700;
+    line-height: 0.92;
+    overflow-wrap: anywhere;
+  }
+
+  h2 {
+    font-size: clamp(40px, 6vw, 88px);
+    font-weight: 600;
+    line-height: 1.05;
   }
 
   ::selection {
@@ -103,6 +119,19 @@
    Components — reusable, keeps every page consistent
    ============================================================ */
 @layer components {
+  .text-body {
+    font-size: clamp(17px, 1.5vw, 20px);
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  .project-title {
+    font-size: clamp(40px, 5vw, 72px);
+    font-weight: 600;
+    line-height: 1.05;
+    overflow-wrap: anywhere;
+  }
+
   /* primary call-to-action: solid warm-white on dark */
   .btn-primary {
     display: inline-flex;
@@ -143,6 +172,7 @@
 
   /* small tag / pill */
   .chip {
+    font-family: var(--font-mono);
     display: inline-flex;
     align-items: center;
     border-radius: 999px;

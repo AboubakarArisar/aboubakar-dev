@@ -16,16 +16,16 @@ const NotFound: React.FC = () => {
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         className='flex max-w-lg flex-col items-center'
       >
-        <h1 className='select-none text-[7rem] font-bold leading-none text-gradient md:text-[11rem]'>
+        <h1 className='select-none text-gradient'>
           404
         </h1>
-        <p className='font-mono text-sm text-[#b8b2a4]'>
+        <p className='font-mono text-xs text-[#b8b2a4]'>
           route not found
         </p>
-        <h2 className='mt-5 text-2xl font-semibold text-white md:text-3xl'>
+        <h2 className='mt-5 text-white'>
           This page took a wrong turn.
         </h2>
-        <p className='mt-3 text-sm leading-7 text-slate-400'>
+        <p className='mt-3 text-body text-slate-400'>
           The link may be broken or the page may have moved. Let's get you back
           to safe ground.
         </p>

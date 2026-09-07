@@ -25,7 +25,7 @@ const Footer: React.FC = () => {
               >
                 Aboubakar<span className='text-accent'>.</span>
               </Link>
-              <p className='mt-4 text-sm leading-7 text-slate-400'>
+              <p className='mt-4 text-body text-slate-400'>
                 Full-stack engineer building fast, reliable web products for
                 startups. Available for freelance MVP builds, backend work, and
                 AI automation.

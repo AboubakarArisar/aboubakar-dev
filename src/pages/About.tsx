@@ -42,7 +42,7 @@ const About: React.FC = () => {
       <div className='mx-auto max-w-6xl'>
         <Reveal className='max-w-3xl'>
           <SectionLabel>About me</SectionLabel>
-          <h1 className='mt-5 text-4xl font-bold tracking-tight md:text-6xl'>
+          <h1 className='mt-5'>
             <span className='text-gradient'>Engineer focused on</span>{" "}
             <span className='text-accent'>execution, not just aesthetics.</span>
           </h1>
@@ -74,7 +74,7 @@ const About: React.FC = () => {
 
           {/* bio + skills */}
           <Reveal delay={0.1}>
-            <div className='space-y-6 text-base leading-8 text-slate-300'>
+            <div className='space-y-6 text-body text-slate-300'>
               <p>
                 I'm <span className='font-semibold text-white'>Aboubakar</span>,
                 a full-stack engineer working with startups and small businesses
@@ -106,7 +106,7 @@ const About: React.FC = () => {
                 <div key={skill.name}>
                   <div className='mb-2 flex items-center justify-between text-sm'>
                     <span className='text-slate-200'>{skill.name}</span>
-                    <span className='font-mono text-accent'>
+                    <span className='font-mono text-xs text-accent'>
                       {skill.level}%
                     </span>
                   </div>
@@ -133,7 +133,7 @@ const About: React.FC = () => {
         <div className='mt-24'>
           <Reveal className='mb-12 max-w-2xl'>
             <SectionLabel>How I work</SectionLabel>
-            <h2 className='mt-4 text-3xl font-bold tracking-tight md:text-4xl'>
+            <h2 className='mt-4'>
               Principles I build by.
             </h2>
           </Reveal>
@@ -142,7 +142,7 @@ const About: React.FC = () => {
               <Reveal key={p.title} delay={i * 0.08}>
                 <div className='group h-full rounded-3xl border border-white/10 bg-white/[0.02] p-7 transition-all duration-500 hover:-translate-y-1 hover:border-white/25 hover:bg-white/[0.035]'>
                   <div className='flex items-center gap-3'>
-                    <span className='font-mono text-sm text-accent'>
+                    <span className='font-mono text-xs text-accent'>
                       0{i + 1}
                     </span>
                     <span className='h-px flex-1 bg-gradient-to-r from-white/30 to-transparent' />
@@ -150,7 +150,7 @@ const About: React.FC = () => {
                   <h3 className='mt-4 text-xl font-semibold text-white'>
                     {p.title}
                   </h3>
-                  <p className='mt-2.5 text-sm leading-7 text-slate-400'>
+                  <p className='mt-2.5 text-body text-slate-400'>
                     {p.text}
                   </p>
                 </div>
@@ -166,7 +166,7 @@ const About: React.FC = () => {
               <h3 className='text-2xl font-semibold text-white'>
                 Want to work together?
               </h3>
-              <p className='mt-2 text-sm text-slate-400'>
+              <p className='mt-2 text-body text-slate-400'>
                 Open to freelance and startup product work.
               </p>
             </div>

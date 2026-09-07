@@ -64,11 +64,11 @@ const Projects: React.FC = () => {
       <div className='mx-auto max-w-6xl'>
         <Reveal className='max-w-3xl'>
           <SectionLabel>Case studies</SectionLabel>
-          <h1 className='mt-5 text-4xl font-bold tracking-tight md:text-6xl'>
+          <h1 className='mt-5'>
             <span className='text-gradient'>Products, </span>
             <span className='text-accent'>not just screens.</span>
           </h1>
-          <p className='mt-6 text-lg leading-8 text-slate-300'>
+          <p className='mt-6 text-body text-slate-300'>
             Landing here from a DM or cold email? This page should make one thing
             clear: I can take an idea, design the workflow, build the product, and
             get it live.
@@ -77,7 +77,7 @@ const Projects: React.FC = () => {
 
         <div className='mt-16 flex items-end justify-between border-b border-white/10 pb-4'>
           <SectionLabel>All projects</SectionLabel>
-          <span className='font-mono text-sm text-[#b8b2a4]'>
+          <span className='font-mono text-xs text-[#b8b2a4]'>
             {String(featuredProjects.length).padStart(2, "0")} shipped
           </span>
         </div>
@@ -111,7 +111,7 @@ const Projects: React.FC = () => {
                 {/* body */}
                 <div className='flex flex-1 flex-col p-6'>
                   <div className='flex items-baseline justify-between'>
-                    <h2 className='text-2xl font-semibold text-white'>
+                    <h2 className='project-title text-white'>
                       {project.title}
                     </h2>
                     <span className='font-mono text-xs text-[#807c74]'>
@@ -119,7 +119,7 @@ const Projects: React.FC = () => {
                     </span>
                   </div>
 
-                  <p className='mt-3 text-sm leading-7 text-slate-400'>
+                  <p className='mt-3 text-body text-slate-400'>
                     {project.description}
                   </p>
 
@@ -127,7 +127,7 @@ const Projects: React.FC = () => {
                     <span className='mt-0.5 font-mono text-xs text-accent'>
                       ↳
                     </span>
-                    <p className='text-sm leading-6 text-slate-400'>
+                    <p className='text-body text-slate-400'>
                       {project.outcome}
                     </p>
                   </div>
@@ -172,14 +172,14 @@ const Projects: React.FC = () => {
           <div className='grid gap-8 rounded-[2rem] border border-white/10 bg-white/[0.025] p-6 sm:p-8 md:grid-cols-[1.1fr_0.9fr] md:p-12'>
             <div>
               <SectionLabel>Best fit</SectionLabel>
-              <h2 className='mt-4 text-3xl font-bold tracking-tight'>
+              <h2 className='mt-4'>
                 The work I'm most useful for
               </h2>
               <div className='mt-6 grid gap-3'>
                 {projectFit.map((item) => (
                   <div
                     key={item}
-                    className='flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.02] p-4 text-sm leading-7 text-slate-200'
+                    className='flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.02] p-4 text-body text-slate-200'
                   >
                     <span className='flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-md bg-white/10 text-xs text-accent'>
                       ✓
@@ -194,7 +194,7 @@ const Projects: React.FC = () => {
               <h3 className='text-2xl font-semibold text-white'>
                 Need someone to own the build?
               </h3>
-              <p className='mt-4 text-sm leading-7 text-slate-300'>
+              <p className='mt-4 text-body text-slate-300'>
                 Send your product idea, current stage and deadline. I help with
                 MVP builds, feature development, backend work and selected AI
                 automation.

@@ -176,13 +176,13 @@ const Homepage: React.FC = () => {
               variants={headlineContainer}
               initial='hidden'
               animate='show'
-              className='mt-6 max-w-2xl text-balance break-words text-[2rem] font-bold leading-[1.08] tracking-tight text-[#f4f1ea] sm:text-[2.6rem] sm:leading-[1.05] md:text-6xl'
+              className='mt-6 max-w-2xl text-balance break-words text-[#f4f1ea]'
             >
               {headline.split(" ").map((word, i) => (
                 <motion.span
                   key={i}
                   variants={headlineWord}
-                  className={`mr-[0.25em] inline-block ${
+                  className={`mr-[0.25em] inline-block max-w-full ${
                     emphasis.includes(word)
                       ? "border-b-2 border-[#e8e2d2]/45 pb-1"
                       : ""
@@ -197,7 +197,7 @@ const Homepage: React.FC = () => {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className='mt-6 max-w-xl text-lg leading-8 text-slate-300'
+              className='mt-6 max-w-xl text-body text-slate-300'
             >
               I'm <span className='font-semibold text-white'>Aboubakar</span> — a
               full-stack engineer crafting sleek frontends and dependable
@@ -307,7 +307,7 @@ const Homepage: React.FC = () => {
               <div className='text-gradient text-3xl font-bold md:text-4xl'>
                 <CountUp to={s.to} suffix={s.suffix} />
               </div>
-              <p className='mt-1.5 text-xs uppercase tracking-wider text-slate-500'>
+              <p className='mt-1.5 font-mono text-xs uppercase tracking-wider text-slate-500'>
                 {s.label}
               </p>
             </div>
@@ -333,7 +333,7 @@ const Homepage: React.FC = () => {
       <section className='mx-auto max-w-6xl px-5 py-20 sm:px-6'>
         <Reveal className='mb-12 max-w-2xl'>
           <SectionLabel>What I do</SectionLabel>
-          <h2 className='mt-4 text-3xl font-bold tracking-tight md:text-5xl'>
+          <h2 className='mt-4'>
             From the first pixel to the production server.
           </h2>
         </Reveal>
@@ -350,7 +350,7 @@ const Homepage: React.FC = () => {
                   <h3 className='mt-5 text-xl font-semibold text-white'>
                     {service.title}
                   </h3>
-                  <p className='mt-3 text-sm leading-7 text-slate-400'>
+                  <p className='mt-3 text-body text-slate-400'>
                     {service.text}
                   </p>
                   <div className='mt-5 flex flex-wrap gap-2'>
@@ -372,7 +372,7 @@ const Homepage: React.FC = () => {
         <Reveal className='mb-12 flex flex-col gap-5 md:flex-row md:items-end md:justify-between'>
           <div className='max-w-2xl'>
             <SectionLabel>Selected work</SectionLabel>
-            <h2 className='mt-4 text-3xl font-bold tracking-tight md:text-5xl'>
+            <h2 className='mt-4'>
               Ideas taken from brief to live product.
             </h2>
           </div>
@@ -398,13 +398,13 @@ const Homepage: React.FC = () => {
                   <div className='absolute inset-0 bg-gradient-to-t from-[#0a0a0b] via-transparent to-transparent' />
                 </div>
                 <div className='p-7'>
-                  <p className='text-xs uppercase tracking-[0.2em] text-[#b8b2a4]'>
+                  <p className='font-mono text-xs uppercase tracking-[0.2em] text-[#b8b2a4]'>
                     {project.category}
                   </p>
-                  <h3 className='mt-2 text-2xl font-semibold text-white'>
+                  <h3 className='project-title mt-2 text-white'>
                     {project.title}
                   </h3>
-                  <p className='mt-3 text-sm leading-7 text-slate-400'>
+                  <p className='mt-3 text-body text-slate-400'>
                     {project.summary}
                   </p>
                   <div className='mt-5 flex flex-wrap gap-2'>
@@ -450,13 +450,13 @@ const Homepage: React.FC = () => {
               style={{ background: "rgba(244,241,234,0.8)" }}
             />
             <SectionLabel className='justify-center'>Let's build</SectionLabel>
-            <h2 className='mx-auto mt-5 max-w-2xl text-3xl font-bold tracking-tight md:text-5xl'>
+            <h2 className='mx-auto mt-5 max-w-2xl'>
               Have a product idea that needs{" "}
               <span className='border-b-2 border-[#e8e2d2]/45 pb-1'>
                 shipping?
               </span>
             </h2>
-            <p className='mx-auto mt-5 max-w-xl text-base leading-8 text-slate-300'>
+            <p className='mx-auto mt-5 max-w-xl text-body text-slate-300'>
               Send your brief, current blockers and timeline. If it's a fit,
               you'll get a concrete next step — not a generic "let's connect."
             </p>
