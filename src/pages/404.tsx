@@ -1,44 +1,14 @@
-import React, { useEffect } from "react";
-import { motion } from "motion/react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { FaArrowLeft } from "react-icons/fa";
 
-const NotFound: React.FC = () => {
-  useEffect(() => {
-    document.title = "Aboubakar — 404";
-  }, []);
-
+export default function NotFound() {
+  useEffect(() => { document.title = "Aboubakar Isar — Page not found"; }, []);
   return (
-    <div className='relative flex min-h-screen flex-col items-center justify-center px-6 text-center'>
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-        className='flex max-w-lg flex-col items-center'
-      >
-        <h1 className='select-none text-gradient'>
-          404
-        </h1>
-        <p className='font-mono text-xs text-[#b8b2a4]'>
-          route not found
-        </p>
-        <h2 className='mt-5 text-white'>
-          This page took a wrong turn.
-        </h2>
-        <p className='mt-3 text-body text-slate-400'>
-          The link may be broken or the page may have moved. Let's get you back
-          to safe ground.
-        </p>
-        <Link
-          to='/'
-          className='btn-primary group mt-8 px-7 py-3.5 text-sm'
-        >
-          <FaArrowLeft className='transition-transform duration-300 group-hover:-translate-x-1' />
-          Back home
-        </Link>
-      </motion.div>
+    <div className="wrap not-found">
+      <p className="metadata">404 / ROUTE NOT FOUND</p>
+      <h1>this page took<br />a wrong turn.</h1>
+      <p className="text-body">The link may be broken or the page may have moved. Let's get you back to safe ground.</p>
+      <Link className="text-link" to="/">Back home <span aria-hidden="true">↗</span></Link>
     </div>
   );
-};
-
-export default NotFound;
+}
