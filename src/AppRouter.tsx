@@ -12,11 +12,13 @@ import Footer from "./components/Footer";
 import Projects from "./pages/Projects";
 import NotFound from "./pages/404";
 import ScrollToTop from "./pages/ScrollToTop";
+import ScrollAnimations from "./components/ScrollAnimations";
 
 const AppRouter: React.FC = () => {
   return (
     <Router>
       <ScrollToTop />
+      <ScrollAnimations />
       <a className='skip-link' href='#main'>Skip to content</a>
       <div className='site-shell'>
         <Header />

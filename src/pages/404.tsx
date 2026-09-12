@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 export default function NotFound() {
-  useEffect(() => { document.title = "Aboubakar Isar — Page not found"; }, []);
+  useEffect(() => { document.title = "Abou Bakar Arisar — Page not found"; }, []);
   return (
     <div className="wrap not-found">
       <p className="metadata">404 / ROUTE NOT FOUND</p>

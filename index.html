@@ -1,16 +1,29 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/dev.jpeg" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#080808" />
+    <meta name="theme-color" content="#0b0f16" />
+    <script>
+      let savedTheme;
+      try {
+        savedTheme = localStorage.getItem("portfolio-theme");
+      } catch (error) {
+        console.warn("Theme preference could not be read; using dark mode.", error);
+      }
+      const initialTheme = savedTheme === "dark" || savedTheme === "light"
+        ? savedTheme
+        : "dark";
+      document.documentElement.dataset.theme = initialTheme;
+      document.querySelector('meta[name="theme-color"]').content = initialTheme === "dark" ? "#0b0f16" : "#f5f5f5";
+    </script>
     <meta
       name="description"
-      content="Aboubakar — full-stack engineer building fast, reliable web products. MERN, Next.js, backend APIs, and practical AI automation for startups."
+      content="Abou Bakar Arisar — full-stack engineer building fast, reliable web products. MERN, Next.js, backend APIs, and practical AI automation for startups."
     />
-    <title>Aboubakar — Full-Stack Engineer</title>
+    <title>Abou Bakar Arisar — Full-Stack Engineer</title>
     <link rel="preload" href="/fonts/inter-latin-variable.woff2" as="font" type="font/woff2" crossorigin />
   </head>
   <body>

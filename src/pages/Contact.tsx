@@ -30,7 +30,8 @@ export function ContactSection({ page = false }: { page?: boolean }) {
 export default function Contact() {
   const [isCalendlyOpen, setCalendlyOpen] = useState(false);
   const [formError, setFormError] = useState("");
-  useEffect(() => { document.title = "Aboubakar Isar — Contact"; }, []);
+  const darkMode = document.documentElement.dataset.theme === "dark";
+  useEffect(() => { document.title = "Abou Bakar Arisar — Contact"; }, []);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -71,7 +72,7 @@ export default function Contact() {
         </form>
       </section>
       {isCalendlyOpen && <Suspense fallback={<p role="status">Loading scheduling…</p>}>
-        <PopupModal url="https://calendly.com/aboubakar-dev/30min" onModalClose={() => setCalendlyOpen(false)} open rootElement={document.getElementById("root") ?? document.body} pageSettings={{ backgroundColor: "0d0d0d", textColor: "f2f0eb", primaryColor: "b8b2a4" }} />
+        <PopupModal url="https://calendly.com/aboubakar-dev/30min" onModalClose={() => setCalendlyOpen(false)} open rootElement={document.getElementById("root") ?? document.body} pageSettings={{ backgroundColor: darkMode ? "0b0f16" : "f5f5f5", textColor: darkMode ? "f2f0eb" : "171717", primaryColor: darkMode ? "8abaff" : "145fbc" }} />
       </Suspense>}
     </div>
   );

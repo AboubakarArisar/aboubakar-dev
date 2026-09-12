@@ -22,7 +22,7 @@ export function AboutIntro({ page = false }: { page?: boolean }) {
       <div className="about-grid">
         <Heading id="about-title" className="about-statement">i like building things<br />people actually use.</Heading>
         <div className="about-copy text-body">
-          <p>I'm Aboubakar, a full-stack engineer working with startups and small businesses that need web products shipped with speed and practicality.</p>
+          <p>I'm Abou Bakar Arisar, a full-stack engineer working with startups and small businesses that need web products shipped with speed and practicality.</p>
           <p>My strongest stack is MongoDB, Express, React, Node.js and Next.js. I care about the whole product: how it feels, how it works, and what it takes to get it live.</p>
         </div>
       </div>
@@ -54,12 +54,12 @@ export function Capabilities() {
 }
 
 export default function About() {
-  useEffect(() => { document.title = "Aboubakar Isar — About"; }, []);
+  useEffect(() => { document.title = "Abou Bakar Arisar — About"; }, []);
   return (
     <div className="wrap page">
       <AboutIntro page />
       <div className="about-detail">
-        <img className="portrait" src="/ab.webp" alt="Aboubakar Isar" width="680" height="850" loading="lazy" decoding="async" />
+        <img className="portrait" src="/ab.webp" alt="Abou Bakar Arisar" width="680" height="850" loading="lazy" decoding="async" />
         <div>
           <SectionLabel>Stuff I care about</SectionLabel>
           <div className="principles">

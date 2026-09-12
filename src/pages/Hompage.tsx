@@ -6,12 +6,12 @@ import { ContactSection } from "./Contact";
 import Experience from "../components/Experience";
 
 export default function Homepage() {
-  useEffect(() => { document.title = "Aboubakar Isar — Full-stack engineer"; }, []);
+  useEffect(() => { document.title = "Abou Bakar Arisar — Full-stack engineer"; }, []);
 
   return (
     <div className="wrap">
       <section className="hero" aria-labelledby="hero-title">
-        <p className="metadata hero-kicker">ABOUBAKAR ISAR / FULL-STACK ENGINEER</p>
+        <p className="metadata hero-kicker">ABOU BAKAR ARISAR / FULL-STACK ENGINEER</p>
         <h1 id="hero-title" className="hero-title">
           <span className="hero-line hero-opening">I build web<span className="mobile-break" /> products </span>
           <span className="hero-line hero-middle">from<span className="mobile-break" /> interface to</span>

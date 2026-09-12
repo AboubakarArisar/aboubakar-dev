@@ -23,14 +23,16 @@ export default function Experience() {
         <h2 id="experience-title" className="section-title">where i've contributed.</h2>
         <a className="text-link" href="https://drive.google.com/file/d/1LUnXffI_I_U9BTVVbfA7adIKPiQgQndJ/view" target="_blank" rel="noopener noreferrer">View résumé <span aria-hidden="true">↗</span></a>
       </div>
+      <div className="experience-grid">
       {experience.map(job => (
-        <article className="experience-row" key={job.company}>
+        <article className="experience-card" key={job.company}>
+          <div className="experience-card-header metadata"><span>{job.period}</span><span>REMOTE</span></div>
           <h3>{job.company}</h3>
           <p className="experience-role">{job.role}</p>
-          <p className="metadata">{job.period}</p>
           <p className="experience-description">{job.description}</p>
         </article>
       ))}
+      </div>
       <p className="metadata experience-location">ALL ROLES REMOTE / BASED IN PAKISTAN</p>
     </section>
   );
