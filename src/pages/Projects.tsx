@@ -18,6 +18,16 @@ type Project = {
 
 const featuredProjects: Project[] = [
   {
+    title: "Pindari Coders", year: "2026",
+    description: "A developer workshop with interactive coding labs, learning roadmaps, curated resources and a community project wall.",
+    outcome: "Brings together eighteen interactive modules across four lab domains, browser-saved roadmap progress, Sanity-managed resources and a moderated project wall backed by Supabase.",
+    stack: ["Next.js", "React", "JavaScript", "Sanity", "Supabase"],
+    role: "Co-founder & full-stack development",
+    liveUrl: "https://pindari.dpdns.org/",
+    repoUrl: "https://github.com/AboubakarArisar/pindari-coders",
+    focus: "DEVELOPER LEARNING PLATFORM",
+  },
+  {
     title: "Last Light", year: "2026",
     description: "A browser-based football game where you draw passes and shots to create the decisive attacking move. Play through a career, take on daily challenges and replay your best moments.",
     outcome: "Built with Three.js and TypeScript, combining ball physics, opponent AI and touch-friendly drawing controls with career progression and optional Supabase cloud saves.",
