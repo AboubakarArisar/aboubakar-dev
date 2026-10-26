@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { site } from "../data/site";
 
 const navLinks = [
   { to: "/projects", label: "Work" },
   { to: "/about", label: "About" },
-  { to: "/#experience", label: "Experience" },
+  { to: "/experience", label: "Experience" },
   { to: "/contact", label: "Contact" },
 ];
 
@@ -19,7 +20,7 @@ export default function Header() {
   const toggleTheme = () => {
     const theme = darkMode ? "light" : "dark";
     document.documentElement.dataset.theme = theme;
-    document.querySelector('meta[name="theme-color"]')?.setAttribute("content", theme === "dark" ? "#0b0f16" : "#f5f5f5");
+    document.querySelector('meta[name="theme-color"]')?.setAttribute("content", theme === "dark" ? "#0d0b0a" : "#f2ede6");
     setDarkMode(!darkMode);
     try {
       localStorage.setItem("portfolio-theme", theme);
@@ -59,19 +60,26 @@ export default function Header() {
   }, [menuOpen]);
 
   return (
-    <header ref={header} className={`site-header ${scrolled ? "scrolled" : ""}`}>
+    <header ref={header} className={`site-header ${scrolled ? "scrolled" : ""} ${menuOpen ? "menu-open" : ""}`}>
       <nav className="site-nav wrap" aria-label="Main navigation">
-        <Link className="brand" to="/" onClick={() => setMenuOpen(false)}>Abou Bakar Arisar.</Link>
+        <Link className="brand" to="/" onClick={() => setMenuOpen(false)}>
+          {/* Supplied monogram (public/brand/monogram-transparent.svg), inlined so it can follow the theme. */}
+          <svg className="brand-mark" viewBox="0 0 384 288" aria-hidden="true" focusable="false">
+            <g fill="#f2eee8"><path d="M91 193 L155 67 L189 67 L126 193 Z" /><path d="M177 38 L214 38 L310 226 L272 226 Z" /><path d="M178 226 L218 146 L247 176 L222 226 Z" /></g>
+            <rect x="73" y="204" width="31" height="31" fill="#ff4b43" />
+          </svg>
+          Abou Bakar Arisar
+        </Link>
         <div id="navigation-links" className={`nav-links ${menuOpen ? "open" : ""}`}>
           {navLinks.map(link => <Link key={link.to} to={link.to} aria-current={pathname === link.to ? "page" : undefined} onClick={() => setMenuOpen(false)}>{link.label}</Link>)}
-          <a className="nav-contact" href="mailto:aboubakar.dev@gmail.com">Let's talk ↗</a>
+          <a href={site.resume} target="_blank" rel="noopener noreferrer">Résumé ↗</a>
         </div>
         <div className="nav-controls">
-          <button className="theme-toggle" type="button" onClick={toggleTheme} aria-label={`Switch to ${darkMode ? "light" : "dark"} mode`} title={`Switch to ${darkMode ? "light" : "dark"} mode`}>
+          <button className="icon-button" type="button" onClick={toggleTheme} aria-label={`Switch to ${darkMode ? "light" : "dark"} mode`} title={`Switch to ${darkMode ? "light" : "dark"} mode`}>
             <span aria-hidden="true">{darkMode ? "☀" : "☾"}</span>
           </button>
           <button ref={toggle} type="button" className="menu-toggle" aria-expanded={menuOpen} aria-controls="navigation-links" onClick={() => setMenuOpen(!menuOpen)}>
-            {menuOpen ? "Close −" : "Menu +"}
+            {menuOpen ? "Close" : "Menu"}
           </button>
         </div>
       </nav>

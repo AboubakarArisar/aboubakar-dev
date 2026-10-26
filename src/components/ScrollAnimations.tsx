@@ -8,7 +8,7 @@ export default function ScrollAnimations() {
     if (!("IntersectionObserver" in window)) return;
     const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
     const elements = Array.from(document.querySelectorAll<HTMLElement>(
-      "main .section-label, main .work-heading, main .about-grid, main .about-facts, main .project-card, main .experience-heading, main .experience-card, main .capability, main .contact-main, main .contact-links",
+      "main .section-head, main .feature-media, main .feature-head, main .feature-detail, main .index-row, main .about-statement, main .about-copy, main .facts, main .timeline, main .role, main .role-line, main .skill-col",
     ));
     let observer: IntersectionObserver | undefined;
 

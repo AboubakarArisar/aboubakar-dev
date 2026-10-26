@@ -1,42 +1,18 @@
 import { lazy, Suspense, useEffect, useState } from "react";
 import type { FormEvent } from "react";
-import SectionLabel from "../components/ui/SectionLabel";
+import { site } from "../data/site";
 
 const PopupModal = lazy(() => import("react-calendly").then(module => ({ default: module.PopupModal })));
-const resumeUrl = "https://drive.google.com/file/d/1LUnXffI_I_U9BTVVbfA7adIKPiQgQndJ/view";
-
-export function ContactSection({ page = false }: { page?: boolean }) {
-  const Heading = page ? "h1" : "h2";
-  return (
-    <section id="contact" className="section" aria-labelledby="contact-title">
-      <SectionLabel>05 / Contact</SectionLabel>
-      <div className="contact-main">
-        <Heading id="contact-title" className="contact-title">have something<br />worth building?</Heading>
-        <div className="contact-actions">
-          <a className="text-link" href="mailto:aboubakar.dev@gmail.com">Let's talk <span aria-hidden="true">↗</span></a><br />
-          <a className="contact-email" href="mailto:aboubakar.dev@gmail.com">aboubakar.dev@gmail.com</a>
-        </div>
-      </div>
-      <div className="contact-links metadata">
-        <a href="mailto:aboubakar.dev@gmail.com">EMAIL ↗</a>
-        <a href="https://github.com/AboubakarArisar" target="_blank" rel="noopener noreferrer">GITHUB ↗</a>
-        <a href="https://linkedin.com/in/aboubakarisar" target="_blank" rel="noopener noreferrer">LINKEDIN ↗</a>
-        <a href={resumeUrl} target="_blank" rel="noopener noreferrer">RÉSUMÉ ↗</a>
-      </div>
-    </section>
-  );
-}
 
 export default function Contact() {
   const [isCalendlyOpen, setCalendlyOpen] = useState(false);
   const [formError, setFormError] = useState("");
   const darkMode = document.documentElement.dataset.theme === "dark";
-  useEffect(() => { document.title = "Abou Bakar Arisar — Contact"; }, []);
+  useEffect(() => { document.title = "Contact | Abou Bakar"; }, []);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const form = event.currentTarget;
-    const data = new FormData(form);
+    const data = new FormData(event.currentTarget);
     const name = String(data.get("name") ?? "").trim();
     const email = String(data.get("email") ?? "").trim();
     const company = String(data.get("company") ?? "").trim();
@@ -47,18 +23,27 @@ export default function Contact() {
     }
     setFormError("");
     const body = encodeURIComponent(`Visitor from portfolio\nName: ${name}\nEmail: ${email}\nCompany: ${company}\n\nProject details:\n${message}`);
-    window.location.assign(`https://wa.me/923483624912?text=${body}`);
+    window.location.assign(`https://wa.me/${site.whatsapp}?text=${body}`);
   };
 
   return (
-    <div className="wrap page">
-      <ContactSection page />
-      <section className="contact-form-section" aria-labelledby="brief-title">
-        <div>
-          <SectionLabel>A little context helps</SectionLabel>
-          <h2 id="brief-title" className="section-title">what are you working on?</h2>
-          <p className="text-body project-fit">Share what you're building, what's blocked and your timeline. This form opens WhatsApp with your brief ready to review.</p>
-          <button className="text-link" type="button" onClick={() => setCalendlyOpen(true)}>Prefer a short call? <span aria-hidden="true">↗</span></button>
+    <div className="page wrap">
+      <section aria-labelledby="contact-title">
+        <p className="meta" style={{ marginBottom: 24 }}>Contact</p>
+        <h1 id="contact-title" className="contact-title">Have something <span className="accent">worth building?</span></h1>
+        <a className="contact-email" href={`mailto:${site.email}`}>{site.email}</a>
+        <div className="contact-links">
+          <a className="link" href={site.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          <a className="link" href={site.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          <a className="link" href={site.contra} target="_blank" rel="noopener noreferrer">Contra ↗</a>
+          <a className="link" href={site.resume} target="_blank" rel="noopener noreferrer">Résumé ↗</a>
+        </div>
+      </section>
+      <section className="contact-brief grid" aria-labelledby="brief-title">
+        <div className="contact-brief-intro">
+          <h2 id="brief-title" className="section-title">What are you working on?</h2>
+          <p>Share what you're building, what's blocked and your timeline. This form opens WhatsApp with your brief ready to review.</p>
+          <button className="link" type="button" onClick={() => setCalendlyOpen(true)}>Prefer a short call? <span aria-hidden="true">↗</span></button>
         </div>
         <form className="contact-form" onSubmit={handleSubmit}>
           <label>Name<input name="name" autoComplete="name" required maxLength={120} placeholder="Your name" /></label>
@@ -68,11 +53,11 @@ export default function Contact() {
           </div>
           <label>Project brief<textarea name="message" rows={5} required maxLength={3000} placeholder="What are you building, and where can I help?" /></label>
           {formError && <p role="alert" className="form-error">{formError}</p>}
-          <button className="btn-primary" type="submit">Continue in WhatsApp ↗</button>
+          <button className="button" type="submit">Continue in WhatsApp <span aria-hidden="true">↗</span></button>
         </form>
       </section>
       {isCalendlyOpen && <Suspense fallback={<p role="status">Loading scheduling…</p>}>
-        <PopupModal url="https://calendly.com/aboubakar-dev/30min" onModalClose={() => setCalendlyOpen(false)} open rootElement={document.getElementById("root") ?? document.body} pageSettings={{ backgroundColor: darkMode ? "0b0f16" : "f5f5f5", textColor: darkMode ? "f2f0eb" : "171717", primaryColor: darkMode ? "8abaff" : "145fbc" }} />
+        <PopupModal url={site.calendly} onModalClose={() => setCalendlyOpen(false)} open rootElement={document.getElementById("root") ?? document.body} pageSettings={{ backgroundColor: darkMode ? "0d0b0a" : "f2ede6", textColor: darkMode ? "efe8df" : "171311", primaryColor: darkMode ? "ff4d3d" : "b8241a" }} />
       </Suspense>}
     </div>
   );

@@ -1,152 +1,128 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import SectionLabel from "../components/ui/SectionLabel";
+import { featuredProjects, otherProjects } from "../data/projects";
+import type { Project } from "../data/projects";
 
-type Project = {
-  title: string;
-  year: string;
-  description: string;
-  outcome: string;
-  stack: string[];
-  focus: string;
-  role?: string;
-  liveUrl?: string;
-  repoUrl?: string;
-  liveLabel?: string;
-  sourceStatus?: string;
-};
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const external = { target: "_blank", rel: "noopener noreferrer" } as const;
 
-const featuredProjects: Project[] = [
-  {
-    title: "Pindari Coders", year: "2026",
-    description: "A developer workshop with interactive coding labs, learning roadmaps, curated resources and a community project wall.",
-    outcome: "Brings together eighteen interactive modules across four lab domains, browser-saved roadmap progress, Sanity-managed resources and a moderated project wall backed by Supabase.",
-    stack: ["Next.js", "React", "JavaScript", "Sanity", "Supabase"],
-    role: "Co-founder & full-stack development",
-    liveUrl: "https://pindari.dpdns.org/",
-    repoUrl: "https://github.com/AboubakarArisar/pindari-coders",
-    focus: "DEVELOPER LEARNING PLATFORM",
-  },
-  {
-    title: "Last Light", year: "2026",
-    description: "A browser-based football game where you draw passes and shots to create the decisive attacking move. Play through a career, take on daily challenges and replay your best moments.",
-    outcome: "Built with Three.js and TypeScript, combining ball physics, opponent AI and touch-friendly drawing controls with career progression and optional Supabase cloud saves.",
-    stack: ["TypeScript", "Three.js", "Vite", "Supabase"],
-    role: "Game design & development",
-    liveUrl: "https://lastlight.aboubakarisar.tech/", repoUrl: "https://github.com/AboubakarArisar/last_light",
-    liveLabel: "Play game",
-    focus: "BROWSER FOOTBALL GAME",
-  },
-  {
-    title: "Droplr", year: "2025",
-    description: "A location-based file sharing app for quick transfers between nearby users, with automatic expiry for cleaner privacy controls.",
-    outcome: "Secure uploads, downloads and geolocation-based sharing, built across the MERN stack.",
-    stack: ["MongoDB", "Express", "React", "Node.js", "Tailwind"],
-    liveUrl: "https://droplr-front.vercel.app/", repoUrl: "https://github.com/AboubakarArisar/Droplr",
-    focus: "REAL-TIME FILE SHARING",
-  },
-  {
-    title: "Steward", year: "2026",
-    liveUrl: "https://trysteward.vercel.app/", repoUrl: "https://github.com/AboubakarArisar/projects-and-payments",
-    description: "A project and financial management platform for freelancers and small teams. Projects, clients and income tracking in one place.",
-    outcome: "Built project tracking, client management and financial dashboards, supported by REST APIs, authentication and optimized database queries.",
-    stack: ["Next.js", "TypeScript", "Node.js", "Express", "MongoDB", "Tailwind", "Zustand"],
-    focus: "FULL-STACK SAAS",
-  },
-  {
-    title: "Dastakhat", year: "2026",
-    liveUrl: "http://dastakhat.vercel.app/", repoUrl: "https://github.com/aboubakarArisar/dastakhat",
-    description: "An e-signature platform for creating, signing and sharing documents, with ready-to-use agreements and custom document creation.",
-    outcome: "Implemented electronic signatures, document sharing and role-based access for both signing parties.",
-    stack: ["Next.js", "TypeScript", "Node.js", "Express", "MongoDB", "Tailwind"],
-    focus: "DOCUMENT WORKFLOWS",
-  },
-  {
-    title: "The Post Digital", year: "2026",
-    liveUrl: "https://www.thepostdigital.net/", sourceStatus: "Source unavailable",
-    description: "A production news platform with server-side rendering and a backend built to handle daily publishing traffic.",
-    outcome: "Identified excessive PostgreSQL data transfer and introduced Redis caching, reducing database bandwidth from gigabytes to a few megabytes.",
-    stack: ["Next.js", "TypeScript", "PostgreSQL", "Redis", "Tailwind"],
-    focus: "PERFORMANCE & BACKEND SYSTEMS",
-  },
-];
+function Cover({ project, sizes }: { project: Project; sizes: string }) {
+  const { slug, title, cover, video } = project;
+  const poster = cover ? `/work/${slug}-1600.webp` : undefined;
+  if (video) {
+    return <video src={video} poster={poster} muted loop playsInline autoPlay={!reduceMotion} preload="metadata" aria-label={cover?.alt ?? title} />;
+  }
+  if (cover) {
+    return (
+      <img
+        src={`/work/${slug}-1600.webp`}
+        srcSet={`/work/${slug}-800.webp 800w, /work/${slug}-1600.webp 1600w`}
+        sizes={sizes}
+        width={cover.width}
+        height={cover.height}
+        alt={cover.alt}
+        loading="lazy"
+        decoding="async"
+      />
+    );
+  }
+  return <div className="type-cover" aria-hidden="true"><span className="type-cover-title">{title}</span></div>;
+}
 
-const otherProjects: Project[] = [
-  {
-    title: "NoteSwap", year: "2024", focus: "STUDENT NOTES MARKETPLACE",
-    description: "A structured sharing platform where students earn points by uploading notes and use those points to access other content.",
-    outcome: "Connects uploading, discovery and downloads through a points-based exchange for academic material.",
-    stack: ["MongoDB", "Express", "React", "Node.js", "Tailwind"],
-    liveUrl: "https://noteswap-sigma.vercel.app/", repoUrl: "https://github.com/AboubakarArisar/NoteSwap-Frontend",
-  },
-  {
-    title: "Torah Learning Platform", year: "2025", focus: "ONLINE LEARNING",
-    description: "A full-stack learning platform with video calling and real-time messaging.",
-    outcome: "Uses WebRTC for video calls and Socket.io for real-time messaging.",
-    stack: ["React", "Node.js", "MongoDB", "WebRTC", "Socket.io"],
-  },
-];
-
-function ProjectCard({ project, index }: { project: Project; index: number }) {
+function ProjectLinks({ project }: { project: Project }) {
   return (
-    <article className="project-card">
-      <div className="project-number metadata"><span>{String(index + 1).padStart(2, "0")} / {project.focus}</span><span>{project.year}</span></div>
-      <h3 className="project-title">{project.title}</h3>
-      <p className="project-description text-body">{project.description}</p>
-      <div className="project-working">
-        <p className="metadata">HOW IT WORKS</p>
-        <p className="text-body">{project.outcome}</p>
+    <>
+      {project.liveUrl && <a className="link" href={project.liveUrl} {...external}>{project.liveLabel ?? "Visit site"} <span aria-hidden="true">↗</span><span className="sr-only"> (opens {project.title} in a new tab)</span></a>}
+      {project.repoUrl && <a className="link" href={project.repoUrl} {...external}>Source <span aria-hidden="true">↗</span><span className="sr-only"> code for {project.title}</span></a>}
+      {!project.repoUrl && project.sourceNote && <span className="meta">{project.sourceNote}</span>}
+    </>
+  );
+}
+
+function Feature({ project, index }: { project: Project; index: number }) {
+  const { slug, title, category, year, summary, stack, caseStudy, role, liveUrl } = project;
+  const sizes = index % 3 === 0 ? "(max-width: 1440px) 100vw, 1440px" : "(max-width: 860px) 100vw, 60vw";
+  return (
+    <article className="feature grid" aria-labelledby={`project-${slug}`}>
+      {liveUrl
+        ? <a className="feature-media" href={liveUrl} {...external} tabIndex={-1} aria-hidden="true" data-label={project.liveLabel ?? "Visit site"}><Cover project={project} sizes={sizes} /></a>
+        : <div className="feature-media"><Cover project={project} sizes={sizes} /></div>}
+      <div className="feature-head">
+        <p className="meta">{String(index + 1).padStart(2, "0")} — {category}{year && ` · ${year}`}</p>
+        <h3 id={`project-${slug}`} className="feature-title">{title}</h3>
       </div>
-      <dl className="project-facts">
-        <div><dt className="metadata">ROLE</dt><dd>{project.role ?? "Full-stack development"}</dd></div>
-        <div><dt className="metadata">TECH STACK</dt><dd className="project-stack">{project.stack.map(tech => <span key={tech}>{tech}</span>)}</dd></div>
-      </dl>
-      <div className="project-actions">
-        {project.liveUrl
-          ? <a className="project-button" href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`${project.liveLabel ?? "Visit live site"}: ${project.title}`}>{project.liveLabel ?? "Visit live site"} <span aria-hidden="true">↗</span></a>
-          : <button className="project-button" type="button" disabled>Live link pending</button>}
-        {project.repoUrl
-          ? <a className="project-button project-button-secondary" href={project.repoUrl} target="_blank" rel="noopener noreferrer" aria-label={`Source code: ${project.title}`}>Source code <span aria-hidden="true">↗</span></a>
-          : <button className="project-button project-button-secondary" type="button" disabled>{project.sourceStatus ?? "Source link pending"}</button>}
+      <div className="feature-detail">
+        <p className="feature-summary">{summary}</p>
+        <p className="meta feature-stack">{stack.join("  ·  ")}</p>
+        <div className="feature-links"><ProjectLinks project={project} /></div>
+        {caseStudy && (
+          <details className="case">
+            <summary className="meta">How it's built</summary>
+            <div className="case-body">
+              {caseStudy.map(text => <p key={text}>{text}</p>)}
+              {role && <p className="meta">Role — {role}</p>}
+            </div>
+          </details>
+        )}
       </div>
     </article>
+  );
+}
+
+function ProjectIndex({ detailed = false }: { detailed?: boolean }) {
+  return (
+    <ol className="index">
+      {otherProjects.map(project => (
+        <li key={project.slug} className="index-row grid">
+          {project.cover && (
+            <div className="index-thumb">
+              <img src={`/work/${project.slug}-800.webp`} width={800} height={500} alt="" loading="lazy" decoding="async" />
+            </div>
+          )}
+          <div className="index-main" style={project.cover ? undefined : { gridColumnStart: 1 }}>
+            <h3 className="index-title">{project.title}</h3>
+            <p className="meta">{project.category}{project.year && ` · ${project.year}`}</p>
+          </div>
+          <div className="index-summary">
+            <p>{project.summary}</p>
+            {detailed && project.caseStudy?.map(text => <p key={text}>{text}</p>)}
+            {detailed && <p className="meta feature-stack">{project.stack.join("  ·  ")}</p>}
+          </div>
+          <div className="index-links"><ProjectLinks project={project} /></div>
+        </li>
+      ))}
+    </ol>
   );
 }
 
 export function SelectedWork({ page = false }: { page?: boolean }) {
   const Heading = page ? "h1" : "h2";
   return (
-    <section id="work" className="section" aria-labelledby="work-title">
-      <SectionLabel>02 / Selected work</SectionLabel>
-      <div className="work-heading">
-        <Heading id="work-title" className="section-title">things i've built.</Heading>
-        {!page && <Link className="text-link" to="/projects">All work <span aria-hidden="true">↗</span></Link>}
+    <section id="work" className="section wrap" aria-labelledby="work-title">
+      <div className="section-head">
+        <div>
+          <p className="meta">(01) Selected work</p>
+          <Heading id="work-title" className="section-title">Things I've built and shipped.</Heading>
+        </div>
       </div>
-      <div className="project-grid">
-        {featuredProjects.map((project, index) => <ProjectCard key={project.title} project={project} index={index} />)}
+      <div>
+        {featuredProjects.map((project, index) => <Feature key={project.slug} project={project} index={index} />)}
       </div>
+      <div className="index-head">
+        <h2 className="meta">More work</h2>
+        <span className="meta">{otherProjects.length} projects</span>
+      </div>
+      <ProjectIndex detailed={page} />
+      {!page && <p className="all-work"><Link className="link" to="/projects">Every project, with details <span aria-hidden="true">→</span></Link></p>}
     </section>
   );
 }
 
 export default function Projects() {
-  useEffect(() => { document.title = "Abou Bakar Arisar — Work"; }, []);
+  useEffect(() => { document.title = "Projects | Abou Bakar"; }, []);
   return (
-    <div className="wrap page">
+    <div className="page">
       <SelectedWork page />
-      <section className="section" aria-labelledby="other-work">
-        <SectionLabel>More from the workbench</SectionLabel>
-        <h2 id="other-work" className="section-title">other things i've made.</h2>
-        <div className="project-grid other-projects">
-          {otherProjects.map((project, index) => <ProjectCard key={project.title} project={project} index={index} />)}
-        </div>
-      </section>
-      <div className="section">
-        <SectionLabel>Best fit</SectionLabel>
-        <h2 className="section-title">a clear idea.<br />a working product.</h2>
-        <p className="body-large project-fit">MVPs, custom dashboards, backend APIs and practical AI automation. Send your product idea, current stage and deadline.</p>
-        <Link className="text-link" to="/contact">Send project scope <span aria-hidden="true">↗</span></Link>
-      </div>
     </div>
   );
 }

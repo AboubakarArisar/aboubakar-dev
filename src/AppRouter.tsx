@@ -10,6 +10,7 @@ import About from "./pages/About";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Projects from "./pages/Projects";
+import ExperiencePage from "./pages/Experience";
 import NotFound from "./pages/404";
 import ScrollToTop from "./pages/ScrollToTop";
 import ScrollAnimations from "./components/ScrollAnimations";
@@ -28,6 +29,7 @@ const AppRouter: React.FC = () => {
             <Route path='/contact' element={<Contact />} />
             <Route path='/about' element={<About />} />
             <Route path='/projects' element={<Projects />} />
+            <Route path='/experience' element={<ExperiencePage />} />
             <Route path='*' element={<NotFound />} />
           </Routes>
         </main>
